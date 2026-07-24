@@ -1,0 +1,3 @@
+MOV 5, ACC
+ADD 3
+MOV ACC, DOWN
