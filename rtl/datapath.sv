@@ -1,101 +1,87 @@
-module datapath (
-    input  logic        clk, rst,
+module datapath #(
+    parameter FILE_NAME = "default.hex"
+)
+(
+    input logic clk, rst,
+    input logic RegWrite,
+    input logic sav_en, swap_en,
+    input logic PCWrite,
+    input logic [1:0] ALUOp,
+    input logic [3:0] srcType,
+
+    output logic zero_flag,
+    output logic sign_flag
+
     
-    // --- سیگنال‌های کنترلی جدید از control_unit ---
-    input  logic        acc_wr,
-    input  logic        bak_wr,
-    input  logic        swp_en,
-    
-    // از control_unit
-    input  logic [3:0]  opcode,
-    input  logic [3:0]  dst,
-    input  logic [3:0]  src_type,
-    input  logic [11:0] src_val,
-    // از port_interface
-    input  logic [10:0] port_rd_data,
-    // خروجی به port_interface
-    output logic [10:0] port_wr_data,
-    // خروجی به control_unit (برای branch و JRO)
-    output logic [10:0] acc_out,
-    output logic [3:0]  jro_target,   // PC + offset برای JRO
-    input  logic [3:0]  pc_in,
-    output logic        branch_taken
 );
 
-    // ── رجیسترها ──────────────────────────────────────────────
-    logic signed [10:0] ACC, BAK;
+    logic [3:0] pc;
+    logic [3:0] pc_next;
+    assign pc_next = pc + 1;
 
-    // ── sign-extend src_val (12-bit two's complement → 11-bit) ─
-    // src_val[11] = نوع src: 0=immediate, 1=port/ACC/NIL
-    // طبق ISA: [15:12]=SrcType, [11:0]=SrcVal
-    // SrcType: 0=NIL,1=ACC,2=BAK,3=IMM,4=LEFT,5=RIGHT,6=UP,7=DOWN,8=ANY,9=LAST
-    logic signed [10:0] src_data;
+    always_ff @(posedge clk or posedge rst) begin : PC_Register
+        if(rst)
+            pc <= 4'b0;
+        else if(PCWrite)
+            pc <= pc_next;
+    end
+
+    //==================================
+    //         instruction memory 
+    //==================================
+    logic [23:0] instr;
+    logic [23:0] imm_extend;
+    assign imm_extend = {{12{instr[11]}}, instr[11:0]};
+
+    instr_mem #(
+        .DATA_WIDTH(24),
+        .ADDR_WIDTH(4),
+        .FILE_NAME(FILE_NAME)
+    ) InstrMem (
+        .addr(pc),
+        .instr(instr)
+    );
+
+    //==================================
+    //        Register File 
+    //==================================
+
+    logic [23:0] acc_value;
+    RegisterFile RF(
+        .rst(rst),
+        .clk(clk),
+        .swap(swap_en),
+        .sav(sav_en),
+        .write_en(RegWrite),
+        .write_addr(instr[19:16]),
+        .acc_out(acc_value),
+        .data_in(alu_out)
+    );
+
+    //فلگ ها
+    assign zero_flag = (acc_value == 24'sd0);
+    assign sign_flag = acc_value[23];
+
+    //==================================
+    //             ALU 
+    //==================================
+    logic [23:0] src_mux_out;
     always_comb begin
-        case (src_type)
-            4'd1:    src_data = ACC;
-            4'd2:    src_data = BAK;
-            4'd3:    src_data = {{1{src_val[10]}}, src_val[10:0]};  // sign-extend 11-bit imm
-            4'd4, 4'd5, 4'd6, 4'd7, 4'd8, 4'd9:
-                     src_data = port_rd_data;
-            default: src_data = 11'd0;  // NIL
+        case (srcType)
+            4'h0: src_mux_out = acc_value;      // ACC
+            4'h1: src_mux_out = 24'sd0;             // NIL
+            4'h8: src_mux_out = imm_extend;         // IMM
+            default: src_mux_out = 24'sd0;     // LEFT, RIGHT, UP, DOWN, ANY, LAST هنوز تعریف نشده در رابط پورت ها
         endcase
     end
 
-    // ── Opcodes (باید با assembler هماهنگ باشد) ───────────────
-    // 0=NOP,1=MOV,2=SWP,3=SAV,4=ADD,5=SUB,6=NEG,
-    // 7=JMP,8=JEZ,9=JNZ,10=JGZ,11=JLZ,12=JRO
+    logic [23:0] alu_out;
+    ALU u_ALU(
+        .ALUOp(ALUOp),
+        .srcA(acc_value),
+        .srcB(src_mux_out),
+        .result(alu_out)
+    );
 
-    // ── ALU + رجیستر ──────────────────────────────────────────
-    always_ff @(posedge clk or posedge rst) begin
-        if (rst) begin
-            ACC <= 11'd0;
-            BAK <= 11'd0;
-        end else begin
-            // مدیریت دستور SWP
-            if (swp_en) begin
-                ACC <= BAK;
-                BAK <= ACC;
-            end else begin
-                // مدیریت دستور SAV
-                if (bak_wr) begin
-                    BAK <= ACC;
-                end
-                
-                // مدیریت دستوراتی که روی ACC می‌نویسند
-                if (acc_wr) begin
-                    case (opcode)
-                        4'd1: begin  // MOV src, dst
-                            if (dst == 4'd1) ACC <= src_data;
-                        end
-                        4'd4: ACC <= ACC + src_data;               // ADD
-                        4'd5: ACC <= ACC - src_data;               // SUB
-                        4'd6: ACC <= -ACC;                         // NEG
-                        default: ;  // سایر موارد تغییری در ACC ایجاد نمی‌کنند
-                    endcase
-                end
-            end
-        end
-    end
-
-    // ── خروجی‌های ترکیبی ──────────────────────────────────────
-    assign acc_out      = ACC;
-    assign port_wr_data = ACC;  // MOV ACC, <port> همیشه ACC را می‌فرستد
-
-    // ── Branch logic (ترکیبی، برای control_unit) ──────────────
-    always_comb begin
-        branch_taken = 1'b0;
-        case (opcode)
-            4'd7:  branch_taken = 1'b1;                    // JMP
-            4'd8:  branch_taken = (ACC == 11'd0);          // JEZ
-            4'd9:  branch_taken = (ACC != 11'd0);          // JNZ
-            4'd10: branch_taken = ($signed(ACC) > 0);      // JGZ
-            4'd11: branch_taken = ($signed(ACC) < 0);      // JLZ
-            4'd12: branch_taken = 1'b1;                    // JRO
-            default: branch_taken = 1'b0;
-        endcase
-    end
-
-    // ── JRO: PC + offset (ترکیبی) ─────────────────────────────
-    assign jro_target = pc_in + src_val[3:0];  // offset 4-bit کافی است (PC=4bit)
 
 endmodule
