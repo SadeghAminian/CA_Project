@@ -1,1 +1,13 @@
 report/ISA.docx
+sim/program.hex
+
+# ModelSim / Questa
+work/
+transcript
+vsim.wlf
+*.wlf
+*.log
+*.mpf
+*.mti
+
+
