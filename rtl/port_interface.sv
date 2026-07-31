@@ -65,8 +65,7 @@ module port_interface (
     end
 
     // Track LAST port
-    always_ff @(posedge clk or posedge rst)
-        if (rst)                              last_port <= 2'd0;
-        else if (port_ready && (port_rd || port_wr)) last_port <= active_idx;
+    else if (port_ready && (port_rd || port_wr) && (port_sel == 3'd6))
+        last_port <= active_idx;
 
 endmodule
