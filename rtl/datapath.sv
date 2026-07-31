@@ -4,13 +4,16 @@ module datapath #(
 (
     input logic clk, rst,
     input logic RegWrite,
+    input logic IRWrite,
     input logic sav_en, swap_en,
     input logic PCWrite,
+    // input logic PCSrc,
     input logic [1:0] ALUOp,
     input logic [3:0] srcType,
 
     output logic zero_flag,
-    output logic sign_flag
+    output logic sign_flag,
+    output logic [11:0] up_instr
 
     
 );
@@ -30,8 +33,11 @@ module datapath #(
     //         instruction memory 
     //==================================
     logic [23:0] instr;
+    logic [23:0] fetched_instr;
     logic [23:0] imm_extend;
-    assign imm_extend = {{12{instr[11]}}, instr[11:0]};
+
+    assign imm_extend = {{12{instr[11]}}, instr[11:0]}; // Extended immediate 
+    assign up_instr = instr[23:12];  // send to contorler
 
     instr_mem #(
         .DATA_WIDTH(24),
@@ -39,8 +45,13 @@ module datapath #(
         .FILE_NAME(FILE_NAME)
     ) InstrMem (
         .addr(pc),
-        .instr(instr)
+        .instr(fetched_instr)
     );
+
+    always_ff @(clk) begin
+        if(IRWrite)
+            instr <= fetched_instr;
+    end
 
     //==================================
     //        Register File 
