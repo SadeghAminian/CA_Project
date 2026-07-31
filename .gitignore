@@ -1,6 +1,12 @@
 report/ISA.docx
 sim/program.hex
 
+hex/
+*.hex
+
+asm/
+*.asm
+
 # ModelSim / Questa
 work/
 transcript
@@ -9,5 +15,5 @@ vsim.wlf
 *.log
 *.mpf
 *.mti
-
-
+*.bak
+tasm.exe
