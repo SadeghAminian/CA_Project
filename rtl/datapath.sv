@@ -1,167 +1,194 @@
-// datapath.sv
-
-module datapath (
+module datapath #(
+    parameter integer PROGRAM_SIZE = 16
+) (
     input  logic        clk,
     input  logic        rst,
 
-    input  logic        acc_wr,
-    input  logic        bak_wr,
-    input  logic        swp_en,
+    input  logic [23:0] instr,
 
-    input  logic [3:0]  opcode,
-    input  logic [3:0]  dst,
-    input  logic [3:0]  src_type,
-    input  logic [11:0] src_val,
+    input  logic        exec_en,
+    input  logic        latch_port_data,
 
-    input  logic [10:0] port_rd_data,
+    input  logic signed [10:0] port_rd_data,
+    output logic signed [10:0] port_wr_data,
 
-    output logic [10:0] port_wr_data,
-
-    output logic [10:0] acc_out,
-    output logic [3:0]  jro_target,
-    input  logic [3:0]  pc_in,
-    output logic        branch_taken
+    output logic [3:0]  pc,
+    output logic signed [10:0] acc_out
 );
+    import tis100_pkg::*;
 
-    localparam logic [3:0] OP_NOP = 4'h0;
-    localparam logic [3:0] OP_MOV = 4'h1;
-    localparam logic [3:0] OP_ADD = 4'h2;
-    localparam logic [3:0] OP_SUB = 4'h3;
-    localparam logic [3:0] OP_NEG = 4'h4;
-    localparam logic [3:0] OP_SAV = 4'h5;
-    localparam logic [3:0] OP_SWP = 4'h6;
-    localparam logic [3:0] OP_JMP = 4'h7;
-    localparam logic [3:0] OP_JEZ = 4'h8;
-    localparam logic [3:0] OP_JNZ = 4'h9;
-    localparam logic [3:0] OP_JGZ = 4'hA;
-    localparam logic [3:0] OP_JLZ = 4'hB;
-    localparam logic [3:0] OP_JRO = 4'hC;
+    logic signed [10:0] acc;
+    logic signed [10:0] bak;
+    logic signed [10:0] port_rd_reg;
 
-    localparam logic [3:0] T_ACC   = 4'h0;
-    localparam logic [3:0] T_NIL   = 4'h1;
-    localparam logic [3:0] T_LEFT  = 4'h2;
-    localparam logic [3:0] T_RIGHT = 4'h3;
-    localparam logic [3:0] T_UP    = 4'h4;
-    localparam logic [3:0] T_DOWN  = 4'h5;
-    localparam logic [3:0] T_ANY   = 4'h6;
-    localparam logic [3:0] T_LAST  = 4'h7;
-    localparam logic [3:0] T_IMM   = 4'h8;
+    logic [3:0] opcode;
+    logic       src_is_imm;
+    logic [2:0] src_sel;
+    logic [2:0] dst_sel;
+    logic signed [10:0] imm;
 
-    logic signed [10:0] ACC;
-    logic signed [10:0] BAK;
+    integer max_pc;
+    integer temp_int;
 
-    logic signed [10:0] src_data;
-    logic signed [11:0] imm12_signed;
-    logic signed [11:0] alu_result_raw;
-    logic signed [10:0] alu_result_sat;
-    logic signed [4:0]  jro_offset;
+    assign opcode     = instr[23:20];
+    assign src_is_imm = instr[19];
+    assign src_sel    = instr[18:16];
+    assign dst_sel    = instr[15:13];
+    assign imm        = instr[10:0];
 
-    assign imm12_signed = $signed(src_val);
+    assign acc_out = acc;
 
-    always_comb begin
-        case (src_type)
-            T_ACC:   src_data = ACC;
-            T_NIL:   src_data = 11'sd0;
-            T_LEFT,
-            T_RIGHT,
-            T_UP,
-            T_DOWN,
-            T_ANY,
-            T_LAST:  src_data = $signed(port_rd_data);
-            T_IMM: begin
-                if (imm12_signed > 12'sd999)
-                    src_data = 11'sd999;
-                else if (imm12_signed < -12'sd999)
-                    src_data = -11'sd999;
-                else
-                    src_data = imm12_signed[10:0];
-            end
-            default: src_data = 11'sd0;
-        endcase
-    end
+    function automatic signed [10:0] operand_value(input logic [2:0] sel);
+        begin
+            case (sel)
+                O_ACC:   operand_value = acc;
+                O_NIL:   operand_value = 11'sd0;
+                O_LEFT:  operand_value = port_rd_reg;
+                O_RIGHT: operand_value = port_rd_reg;
+                O_UP:    operand_value = port_rd_reg;
+                O_DOWN:  operand_value = port_rd_reg;
+                O_ANY:   operand_value = port_rd_reg;
+                O_LAST:  operand_value = port_rd_reg;
+                default: operand_value = 11'sd0;
+            endcase
+        end
+    endfunction
 
-    always_comb begin
-        alu_result_raw = 12'sd0;
+    function automatic signed [10:0] src_value;
+        begin
+            if (src_is_imm)
+                src_value = imm;
+            else
+                src_value = operand_value(src_sel);
+        end
+    endfunction
 
-        case (opcode)
-            OP_ADD: alu_result_raw = $signed({ACC[10], ACC}) + $signed({src_data[10], src_data});
-            OP_SUB: alu_result_raw = $signed({ACC[10], ACC}) - $signed({src_data[10], src_data});
-            OP_NEG: alu_result_raw = -$signed({ACC[10], ACC});
-            default: alu_result_raw = $signed({src_data[10], src_data});
-        endcase
+    function automatic [3:0] clamp_pc_abs(input integer value);
+        integer local_max;
+        begin
+            local_max = PROGRAM_SIZE - 1;
+            if (local_max > 15)
+                local_max = 15;
+            if (local_max < 0)
+                local_max = 0;
 
-        if (alu_result_raw > 12'sd999)
-            alu_result_sat = 11'sd999;
-        else if (alu_result_raw < -12'sd999)
-            alu_result_sat = -11'sd999;
-        else
-            alu_result_sat = alu_result_raw[10:0];
-    end
+            if (value < 0)
+                clamp_pc_abs = 4'd0;
+            else if (value > local_max)
+                clamp_pc_abs = local_max[3:0];
+            else
+                clamp_pc_abs = value[3:0];
+        end
+    endfunction
+
+    function automatic [3:0] next_pc;
+        integer local_max;
+        begin
+            local_max = PROGRAM_SIZE - 1;
+            if (local_max > 15)
+                local_max = 15;
+            if (local_max < 0)
+                local_max = 0;
+
+            if (pc >= local_max[3:0])
+                next_pc = 4'd0;
+            else
+                next_pc = pc + 4'd1;
+        end
+    endfunction
+
+    assign port_wr_data = src_value;
 
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
-            ACC <= 11'sd0;
-            BAK <= 11'sd0;
+            acc         <= 11'sd0;
+            bak         <= 11'sd0;
+            port_rd_reg <= 11'sd0;
+            pc          <= 4'd0;
         end else begin
-            if (swp_en) begin
-                ACC <= BAK;
-                BAK <= ACC;
-            end else begin
-                if (bak_wr)
-                    BAK <= ACC;
+            if (latch_port_data)
+                port_rd_reg <= port_rd_data;
 
-                if (acc_wr) begin
-                    case (opcode)
-                        OP_MOV: begin
-                            if (dst == T_ACC)
-                                ACC <= src_data;
-                        end
+            if (exec_en) begin
+                case (opcode)
+                    OP_NOP: begin
+                        pc <= next_pc;
+                    end
 
-                        OP_ADD,
-                        OP_SUB,
-                        OP_NEG: begin
-                            ACC <= alu_result_sat;
-                        end
+                    OP_MOV: begin
+                        if (dst_sel == O_ACC)
+                            acc <= src_value;
+                        pc <= next_pc;
+                    end
 
-                        default: begin
-                            ACC <= ACC;
-                        end
-                    endcase
-                end
+                    OP_ADD: begin
+                        acc <= sat11(acc + src_value);
+                        pc  <= next_pc;
+                    end
+
+                    OP_SUB: begin
+                        acc <= sat11(acc - src_value);
+                        pc  <= next_pc;
+                    end
+
+                    OP_NEG: begin
+                        acc <= sat11(-acc);
+                        pc  <= next_pc;
+                    end
+
+                    OP_SAV: begin
+                        bak <= acc;
+                        pc  <= next_pc;
+                    end
+
+                    OP_SWP: begin
+                        acc <= bak;
+                        bak <= acc;
+                        pc  <= next_pc;
+                    end
+
+                    OP_JMP: begin
+                        pc <= clamp_pc_abs(imm);
+                    end
+
+                    OP_JEZ: begin
+                        if (acc == 0)
+                            pc <= clamp_pc_abs(imm);
+                        else
+                            pc <= next_pc;
+                    end
+
+                    OP_JNZ: begin
+                        if (acc != 0)
+                            pc <= clamp_pc_abs(imm);
+                        else
+                            pc <= next_pc;
+                    end
+
+                    OP_JGZ: begin
+                        if (acc > 0)
+                            pc <= clamp_pc_abs(imm);
+                        else
+                            pc <= next_pc;
+                    end
+
+                    OP_JLZ: begin
+                        if (acc < 0)
+                            pc <= clamp_pc_abs(imm);
+                        else
+                            pc <= next_pc;
+                    end
+
+                    OP_JRO: begin
+                        temp_int = pc + src_value;
+                        pc <= clamp_pc_abs(temp_int);
+                    end
+
+                    default: begin
+                        pc <= next_pc;
+                    end
+                endcase
             end
         end
     end
-
-    assign acc_out = ACC;
-
-    always_comb begin
-        case (src_type)
-            T_ACC:   port_wr_data = ACC;
-            T_NIL:   port_wr_data = 11'sd0;
-            T_IMM:   port_wr_data = src_data;
-            default: port_wr_data = src_data;
-        endcase
-    end
-
-    always_comb begin
-        case (opcode)
-            OP_JMP: branch_taken = 1'b1;
-            OP_JEZ: branch_taken = (ACC == 11'sd0);
-            OP_JNZ: branch_taken = (ACC != 11'sd0);
-            OP_JGZ: branch_taken = (ACC > 11'sd0);
-            OP_JLZ: branch_taken = (ACC < 11'sd0);
-            OP_JRO: branch_taken = 1'b1;
-            default: branch_taken = 1'b0;
-        endcase
-    end
-
-    always_comb begin
-        if (src_type == T_IMM)
-            jro_offset = src_val[4:0];
-        else
-            jro_offset = src_data[4:0];
-
-        jro_target = pc_in + jro_offset[3:0];
-    end
-
 endmodule
