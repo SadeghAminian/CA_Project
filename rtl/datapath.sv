@@ -7,7 +7,7 @@ module datapath #(
     input logic IRWrite,
     input logic sav_en, swap_en,
     input logic PCWrite,
-    input logic PCSrc[1:0],
+    input logic [1:0] PCSrc,
     input logic [1:0] ALUOp,
     input logic [3:0] srcType,
 

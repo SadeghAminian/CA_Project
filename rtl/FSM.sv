@@ -9,7 +9,7 @@ module FSM (
     // DataPath signals 
     output logic PCUpdate,
     output logic Branch,
-    output logic PCSrc[1:0], 
+    output logic [1:0] PCSrc, 
     output logic IRWrite,
     output logic RegWrite,
     output logic sav_en,

@@ -7,7 +7,7 @@ module Controller (
     
     // خروجی‌های کنترلی به Datapath
     output logic        PCWrite,
-    output logic        PCSrc[1:0],
+    output logic [1:0]  PCSrc,
     output logic        RegWrite,
     output logic        IRWrite,
     output logic        sav_en,
