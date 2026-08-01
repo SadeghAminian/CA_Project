@@ -18,6 +18,7 @@ module datapath #(
 
     logic [3:0] pc;
     logic [3:0] pc_next;
+    logic [3:0] oldPC;
 
     logic signed [23:0] pc_ext;
 
@@ -35,8 +36,8 @@ module datapath #(
         case (PCSrc)
             2'b00: pc_ext = $signed({20'd0, pc}) + 24'sd1;          // Default: PC + 1
             2'b01: pc_ext = imm_extend;                             // Other branches: Absolute IMM
-            2'b10: pc_ext = $signed({20'd0, pc}) + acc_value;       // JRO ACC: PC + ACC
-            2'b11: pc_ext = $signed({20'd0, pc}) + imm_extend;      // JRO IMM: PC + IMM
+            2'b10: pc_ext = $signed({20'd0, oldPC}) + acc_value;       // JRO ACC: PC + ACC
+            2'b11: pc_ext = $signed({20'd0, oldPC}) + imm_extend;      // JRO IMM: PC + IMM
             default: begin
                 pc_ext = $signed({20'd0, pc}) + 24'sd1; 
             end
@@ -49,6 +50,13 @@ module datapath #(
             pc <= 4'b0;
         else if(PCWrite)
             pc <= pc_next;
+    end
+
+    always_ff @(posedge clk or posedge rst) begin : Old_PC_Register
+        if(rst)
+            oldPC <= 4'b0;
+        else if(IRWrite)
+            oldPC <= pc;  // ← آدرس PC قبل از +1 شدن ذخیره می‌شود
     end
 
     //==================================
