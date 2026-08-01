@@ -18,7 +18,7 @@ inline const std::unordered_map<std::string, uint8_t> OPERAND = {
 };
 
 constexpr uint8_t IMM        = 0x8;
-constexpr uint8_t LABEL_TYPE = 0x9;
+constexpr uint8_t LABEL_TYPE = 0x8;
 
 inline const std::unordered_set<std::string> ONE_OP  = {"NOP", "SWP", "SAV", "NEG"};
 inline const std::unordered_set<std::string> TWO_OP  = {"MOV"};
