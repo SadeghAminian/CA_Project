@@ -9,7 +9,7 @@ module FSM (
     // DataPath signals 
     output logic PCUpdate,
     output logic Branch,
-    output logic PCSrc, 
+    output logic PCSrc[1:0], 
     output logic IRWrite,
     output logic RegWrite,
     output logic sav_en,
@@ -56,11 +56,15 @@ module FSM (
     logic is_src_port;
     logic is_dst_port;
     logic is_branch;
+    logic branch_src;
+    logic branch_is_jro;
 
     always_comb begin
         is_src_port = (src_type >= 4'h2 && src_type <= 4'h7);
         is_dst_port = (dst >= 4'h2 && dst <= 4'h7);
         is_branch = (opcode >= 4'h7 && opcode <= 4'hC);
+        branch_src = (src_type == 4'h8); // check if src is imm else is ACC
+        branch_is_jro = (opcode == 4'hC);
     end
 
     // ==========================================
@@ -126,7 +130,7 @@ module FSM (
     always_comb begin
         PCUpdate        = 1'b0;
         IRWrite        = 1'b0;
-        PCSrc          = 1'b0; // پیش‌فرض: PC + 1
+        PCSrc          = 2'b00; // پیش‌فرض: PC + 1
         RegWrite       = 1'b0;
         sav_en         = 1'b0;
         swap_en        = 1'b0;
@@ -152,7 +156,7 @@ module FSM (
             ST_FETCH: begin
                 IRWrite = 1'b1;
                 PCUpdate = 1'b1;
-                // PCSrc = 1'b0; // pc + 1 defualt
+                PCSrc = 2'b00; // pc + 1 defualt
             end
             
             ST_DECODE: begin
@@ -202,7 +206,7 @@ module FSM (
             // ST_WAIT_WRITE= 3'b100,
             ST_BRANCH: begin
                 Branch = 1'b1;
-                PCSrc = 1'b1;
+                PCSrc = {branch_is_jro,branch_src};
             end
 
             default: ;

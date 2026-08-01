@@ -7,20 +7,42 @@ module datapath #(
     input logic IRWrite,
     input logic sav_en, swap_en,
     input logic PCWrite,
-    input logic PCSrc,
+    input logic PCSrc[1:0],
     input logic [1:0] ALUOp,
     input logic [3:0] srcType,
 
     output logic zero_flag,
     output logic sign_flag,
     output logic [11:0] up_instr
-
-    
 );
 
     logic [3:0] pc;
     logic [3:0] pc_next;
-    assign pc_next = pc + 1;
+
+    logic signed [23:0] pc_ext;
+
+    logic signed [23:0] acc_value;
+    logic signed [23:0] alu_out;
+
+    logic [23:0] instr;
+    logic [23:0] fetched_instr;
+    logic signed [23:0] imm_extend;
+
+    //==================================
+    //         PC source logic 
+    //==================================
+     always_comb begin
+        case (PCSrc)
+            2'b00: pc_ext = $signed({20'd0, pc}) + 24'sd1;          // Default: PC + 1
+            2'b01: pc_ext = imm_extend;                             // Other branches: Absolute IMM
+            2'b10: pc_ext = $signed({20'd0, pc}) + acc_value;       // JRO ACC: PC + ACC
+            2'b11: pc_ext = $signed({20'd0, pc}) + imm_extend;      // JRO IMM: PC + IMM
+            default: begin
+                pc_ext = $signed({20'd0, pc}) + 24'sd1; 
+            end
+        endcase
+    end
+    assign pc_next = pc_ext[3:0];
 
     always_ff @(posedge clk or posedge rst) begin : PC_Register
         if(rst)
@@ -32,10 +54,6 @@ module datapath #(
     //==================================
     //         instruction memory 
     //==================================
-    logic [23:0] instr;
-    logic [23:0] fetched_instr;
-    logic signed [23:0] imm_extend;
-
     assign imm_extend = {{12{instr[11]}}, instr[11:0]}; // Extended immediate 
     assign up_instr = instr[23:12];  // send to contorler
 
@@ -56,9 +74,6 @@ module datapath #(
     //==================================
     //        Register File 
     //==================================
-
-    logic signed [23:0] acc_value;
-    logic signed [23:0] alu_out;
     RegisterFile RF(
         .rst(rst),
         .clk(clk),

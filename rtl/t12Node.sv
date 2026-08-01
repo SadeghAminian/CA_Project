@@ -4,8 +4,8 @@ module t12Node #(
     input  logic clk,
     input  logic rst,
     output logic [23:0] acc_out,
-    output logic        zero_flag,
-    output logic        sign_flag
+    output logic zero_flag,
+    output logic sign_flag
 );
 
     // ==========================================
@@ -13,7 +13,7 @@ module t12Node #(
     // ==========================================
     logic        PCWrite;
     logic        IRWrite;
-    logic        PCSrc;
+    logic [1:0]  PCSrc;
     logic        RegWrite;
     logic        sav_en;
     logic        swap_en;
