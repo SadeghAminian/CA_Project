@@ -211,14 +211,20 @@ module testbench_t12Node_blocking_write;
             $display("Now making RIGHT neighbor ready");
 
             right_ready_in = 1;
-
-            @(posedge clk);
-            #1;
-            show_status("Handshake cycle");
-
+            
+            // یک نانوثانیه صبر می‌کنیم تا مدار ترکیبی (Combinational) آپدیت شود
+            #1; 
+            
+            // حالا قبل از اینکه کلاک بخورد و State تغییر کند، سیگنال‌ها را چک می‌کنیم
             check_equal_logic("write_done after right_ready_in", dut.write_done, 1'b1);
             check_equal_logic("right_valid_out during handshake", right_valid_out, 1'b1);
             check_equal_int("data_out during handshake", $signed(data_out), 55);
+
+            // حالا منتظر لبه کلاک می‌مانیم تا FSM به استیت بعدی برود
+            @(posedge clk);
+            #1;
+            show_status("Handshake cycle completed");
+
 
             @(posedge clk);
             #1;
