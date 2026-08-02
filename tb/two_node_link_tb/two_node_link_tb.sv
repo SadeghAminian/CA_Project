@@ -2,6 +2,8 @@
 
 module two_node_link_tb;
 
+    parameter integer VERBOSE = 0;
+
     logic clk;
     logic rst;
 
@@ -33,6 +35,9 @@ module two_node_link_tb;
     logic signed [23:0] held_data;
     logic signed [23:0] transferred_data;
 
+    logic [23:0] prev_acc_a;
+    logic [23:0] prev_acc_b;
+
     two_node_link_top #(
         .NODE_A_FILE("node_a.hex"),
         .NODE_B_FILE("node_b.hex")
@@ -58,7 +63,7 @@ module two_node_link_tb;
     end
 
     initial begin
-        $dumpfile("two_node_link_final.vcd");
+        $dumpfile("two_node_link_final_clean.vcd");
         $dumpvars(0, two_node_link_tb);
     end
 
@@ -107,22 +112,22 @@ module two_node_link_tb;
         end
     endtask
 
-    task automatic print_monitor;
+    task automatic print_cycle_status;
         begin
-            $display("MONITOR: cycle=%0d time=%0t | A_ACC=%0d B_ACC=%0d | A_TO_B_DATA=%0d VALID=%0b READY=%0b | B_TO_A_DATA=%0d VALID=%0b READY=%0b | A_TO_B_HS=%0b B_TO_A_HS=%0b",
-                cycle_count,
-                $time,
-                $signed(acc_a_out),
-                $signed(acc_b_out),
-                $signed(a_to_b_data),
-                a_to_b_valid,
-                a_to_b_ready,
-                $signed(b_to_a_data),
-                b_to_a_valid,
-                b_to_a_ready,
-                a_to_b_valid && a_to_b_ready,
-                b_to_a_valid && b_to_a_ready
-            );
+            if (VERBOSE != 0) begin
+                $display("CYCLE: %0d time=%0t A_ACC=%0d B_ACC=%0d A2B_DATA=%0d A2B_V=%0b A2B_R=%0b B2A_DATA=%0d B2A_V=%0b B2A_R=%0b",
+                    cycle_count,
+                    $time,
+                    $signed(acc_a_out),
+                    $signed(acc_b_out),
+                    $signed(a_to_b_data),
+                    a_to_b_valid,
+                    a_to_b_ready,
+                    $signed(b_to_a_data),
+                    b_to_a_valid,
+                    b_to_a_ready
+                );
+            end
         end
     endtask
 
@@ -130,10 +135,21 @@ module two_node_link_tb;
         begin
             cycle_count = cycle_count + 1;
 
-            print_monitor();
+            print_cycle_status();
 
-            if (a_to_b_ready && !a_to_b_valid) begin
+            if (acc_a_out !== prev_acc_a) begin
+                $display("EVENT: cycle=%0d time=%0t Node A ACC changed: %0d -> %0d", cycle_count, $time, $signed(prev_acc_a), $signed(acc_a_out));
+                prev_acc_a = acc_a_out;
+            end
+
+            if (acc_b_out !== prev_acc_b) begin
+                $display("EVENT: cycle=%0d time=%0t Node B ACC changed: %0d -> %0d", cycle_count, $time, $signed(prev_acc_b), $signed(acc_b_out));
+                prev_acc_b = acc_b_out;
+            end
+
+            if (!handshake_seen && !receiver_wait_seen && a_to_b_ready && !a_to_b_valid) begin
                 receiver_wait_seen = 1'b1;
+                $display("EVENT: cycle=%0d time=%0t Receiver wait observed: B.LEFT READY=1 while A.RIGHT VALID=0", cycle_count, $time);
             end
 
             if (a_to_b_valid && !a_to_b_ready) begin
@@ -142,9 +158,10 @@ module two_node_link_tb;
                 if (!data_hold_active) begin
                     data_hold_active = 1'b1;
                     held_data = a_to_b_data;
+                    $display("EVENT: cycle=%0d time=%0t Sender wait observed: A.RIGHT VALID=1 READY=0 DATA=%0d", cycle_count, $time, $signed(a_to_b_data));
                 end else begin
                     if (a_to_b_data !== held_data) begin
-                        $display("FAIL: A.RIGHT data changed while VALID=1 and READY=0, old=%0d new=%0d", $signed(held_data), $signed(a_to_b_data));
+                        $display("FAIL: cycle=%0d time=%0t A.RIGHT data changed while VALID=1 READY=0, old=%0d new=%0d", cycle_count, $time, $signed(held_data), $signed(a_to_b_data));
                         data_unstable_count = data_unstable_count + 1;
                         fail_count = fail_count + 1;
                         held_data = a_to_b_data;
@@ -160,15 +177,15 @@ module two_node_link_tb;
 
                 if (!handshake_seen) begin
                     handshake_seen = 1'b1;
-                    $display("MONITOR: A.RIGHT to B.LEFT handshake detected, data=%0d", $signed(a_to_b_data));
+                    $display("EVENT: cycle=%0d time=%0t A.RIGHT -> B.LEFT handshake, data=%0d", cycle_count, $time, $signed(a_to_b_data));
                 end else begin
-                    $display("MONITOR: Additional A.RIGHT to B.LEFT handshake detected, data=%0d", $signed(a_to_b_data));
+                    $display("EVENT: cycle=%0d time=%0t Extra A.RIGHT -> B.LEFT handshake, data=%0d", cycle_count, $time, $signed(a_to_b_data));
                 end
             end
 
             if (b_to_a_valid && b_to_a_ready) begin
                 reverse_handshake_count = reverse_handshake_count + 1;
-                $display("MONITOR: Reverse B.LEFT to A.RIGHT handshake detected, data=%0d", $signed(b_to_a_data));
+                $display("EVENT: cycle=%0d time=%0t Reverse B.LEFT -> A.RIGHT handshake, data=%0d", cycle_count, $time, $signed(b_to_a_data));
             end
         end
     endtask
@@ -191,6 +208,9 @@ module two_node_link_tb;
         held_data = 24'sd0;
         transferred_data = 24'sd0;
 
+        prev_acc_a = 24'd0;
+        prev_acc_b = 24'd0;
+
         rst = 1'b1;
 
         repeat (3) @(posedge clk);
@@ -198,8 +218,15 @@ module two_node_link_tb;
         @(negedge clk);
         rst = 1'b0;
 
+        @(negedge clk);
+        #1;
+
+        prev_acc_a = acc_a_out;
+        prev_acc_b = acc_b_out;
+
         $display("----------------------------------------");
-        $display("Two-node link test started");
+        $display("Two-node link clean timing test started");
+        $display("Reset released. Sampling is done at negedge clk + 1ns.");
         $display("----------------------------------------");
 
         while (!handshake_seen && pre_handshake_cycles < 40) begin
@@ -209,13 +236,17 @@ module two_node_link_tb;
             sample_and_monitor();
         end
 
+        $display("----------------------------------------");
+        $display("Pre-handshake phase completed");
+        $display("----------------------------------------");
+
         check_logic("Receiver ready observed before first handshake", receiver_wait_seen, 1'b1);
         check_integer("A.RIGHT to B.LEFT handshake count before post-run", handshake_count, 1);
         check_data("Transferred data", transferred_data, 24'sd55);
-        check_integer("Data unstable count while VALID=1 and READY=0", data_unstable_count, 0);
+        check_integer("Data unstable count while VALID=1 READY=0", data_unstable_count, 0);
 
         if (sender_wait_seen) begin
-            $display("INFO: Sender had at least one VALID=1 READY=0 waiting cycle");
+            $display("INFO: Sender had at least one visible VALID=1 READY=0 waiting cycle");
         end else begin
             $display("INFO: Sender did not have a visible VALID=1 READY=0 waiting cycle");
         end
@@ -227,11 +258,18 @@ module two_node_link_tb;
             sample_and_monitor();
         end
 
+        $display("----------------------------------------");
+        $display("Post-handshake phase completed");
+        $display("----------------------------------------");
+
         check_data("Node A ACC", acc_a_out, 24'sd55);
         check_data("Node B ACC", acc_b_out, 24'sd55);
         check_integer("Final A.RIGHT to B.LEFT handshake count", handshake_count, 1);
         check_integer("Reverse B.LEFT to A.RIGHT handshake count", reverse_handshake_count, 0);
 
+        $display("----------------------------------------");
+        $display("Final state:");
+        $display("A_ACC=%0d B_ACC=%0d A2B_HANDSHAKES=%0d B2A_HANDSHAKES=%0d", $signed(acc_a_out), $signed(acc_b_out), handshake_count, reverse_handshake_count);
         $display("----------------------------------------");
         $display("Passed: %0d", pass_count);
         $display("Failed: %0d", fail_count);
