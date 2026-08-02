@@ -1,3 +1,4 @@
+import cpu_type_pkg::*;
 module datapath #(
     parameter string FILE_NAME = "default.hex"
 )
@@ -13,7 +14,11 @@ module datapath #(
 
     output logic zero_flag,
     output logic sign_flag,
-    output logic [11:0] up_instr
+    output logic [11:0] up_instr,
+
+    input  logic signed [23:0] port_data_in,  // دریافت دیتای پورت برای خواندن
+    output logic signed [23:0] port_data_out  // ارسال دیتا به پورت برای نوشتن
+
 );
 
     logic [3:0] pc;
@@ -106,9 +111,13 @@ module datapath #(
             4'b00: src_mux_out = acc_value;      // ACC
             4'b01: src_mux_out = 24'sd0;             // NIL
             4'b10: src_mux_out = imm_extend;         // IMM
-            default: src_mux_out = 24'sd0;     // LEFT, RIGHT, UP, DOWN, ANY, LAST هنوز تعریف نشده در رابط پورت ها
+            4'b11: src_mux_out = port_data_in;   // Ports (LEFT, RIGHT, UP, DOWN, ANY, LAST)
+            default: src_mux_out = 24'sd0;     
         endcase
     end
+
+    // اتصال داده‌ی منبع به پورت خروجی برای عملیات نوشتن روی همسایه
+    assign port_data_out = src_mux_out;
 
     ALU u_ALU(
         .ALUOp(ALUOp),

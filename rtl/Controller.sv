@@ -1,9 +1,12 @@
+import cpu_type_pkg::*;
 module Controller (
     input logic clk,
     input logic rst,
     input logic [11:0] instr,
     input logic zero_flag,
     input logic sign_flag,
+    input  logic read_done, 
+    input  logic write_done, 
     
     // خروجی‌های کنترلی به Datapath
     output logic        PCWrite,
@@ -13,7 +16,12 @@ module Controller (
     output logic        sav_en,
     output logic        swap_en,
     output logic [1:0]  ALUOp,
-    output logic [3:0]  srcType
+    output logic [3:0]  srcType,
+
+    output logic    write_en, 
+    output logic    ready_en,
+    output PortType port_src, 
+    output PortType port_dst
 );
 
     logic branchTaken;
@@ -27,6 +35,8 @@ module Controller (
         .clk(clk),
         .rst(rst),
         .instr(instr),
+        .read_done(read_done),
+        .write_done(write_done),
         .PCUpdate(PCUpdate),
         .Branch(Branch),
         .PCSrc(PCSrc),
@@ -35,6 +45,10 @@ module Controller (
         .swap_en(swap_en),
         .ALUOp(ALUOp),
         .srcType(srcType),
+        .write_en(write_en),
+        .ready_en(ready_en),
+        .port_src(port_src),
+        .port_dst(port_dst),
         .IRWrite(IRWrite)
     );
 

@@ -1,11 +1,17 @@
+import cpu_type_pkg::*;
 module FSM (
     input logic clk, rst,
 
     input logic [11:0] instr,
 
-    // input  logic port_src_valid, // داده در پورت مبدأ آماده خواندن است
-    // input  logic port_dst_ready, // پورت مقصد آماده دریافت داده است
+    //دریافت بازخورد از port_interface
+    input  logic read_done, 
+    input  logic write_done, 
     
+    output logic    write_en, 
+    output logic    ready_en,
+    output PortType port_src, 
+    output PortType port_dst,
     // DataPath signals 
     output logic PCUpdate,
     output logic Branch,
@@ -17,8 +23,7 @@ module FSM (
     output logic [1:0]  ALUOp,          // PASS, ADD, SUB, NEG
     output logic [3:0] srcType
 
-    // output logic en_src_ready,
-    // output logic en_dst_valid
+   
 );
   
     localparam logic [3:0] NOP = 4'h0;
@@ -58,6 +63,29 @@ module FSM (
     logic is_branch;
     logic branch_src;
     logic branch_is_jro;
+
+    // ==========================================
+    //              PortType Decoder
+    // ==========================================
+    always_comb begin
+        port_src = LEFT; // مقدار پیش‌فرض
+        case (src_type)
+            4'h2: port_src = LEFT;
+            4'h3: port_src = RIGHT;
+            4'h4: port_src = UP;
+            4'h5: port_src = DOWN;
+            default: port_src = LEFT;
+        endcase
+
+        port_dst = LEFT; // مقدار پیش‌فرض
+        case (dst)
+            4'h2: port_dst = LEFT;
+            4'h3: port_dst = RIGHT;
+            4'h4: port_dst = UP;
+            4'h5: port_dst = DOWN;
+            default: port_dst = LEFT;
+        endcase
+    end
 
     always_comb begin
         is_src_port = (src_type >= 4'h2 && src_type <= 4'h7);
@@ -100,16 +128,25 @@ module FSM (
                 end
             end
 
-            // ST_WAIT_READ: begin
-            //     if(port_src_valid) begin
-            //         if(is_dst_port) begin
-            //             next_state = ST_WAIT_WRITE;
-            //         end else begin
-            //             next_state = ST_EXECUTE;
-            //         end
-            //     end
-            // end
+            ST_WAIT_READ: begin
+                if(read_done != 1) begin
+                    next_state = ST_WAIT_READ;
+                end else if(is_dst_port) begin
+                        next_state = ST_WAIT_WRITE;
+                    end else begin
+                        next_state = ST_EXECUTE;
+                    end
+                
+            end
             
+            ST_WAIT_WRITE: begin
+                if(write_done != 1'b1) begin
+                    next_state = ST_WAIT_WRITE;
+                end else begin
+                    next_state = ST_EXECUTE;
+                end
+            end
+
             ST_EXECUTE: begin
                 next_state = ST_FETCH;
             end
@@ -118,7 +155,7 @@ module FSM (
                 next_state = ST_FETCH;
             end
 
-            // ST_WAIT_WRITE:
+            
             default: next_state = ST_FETCH;
         endcase
     end
@@ -128,16 +165,18 @@ module FSM (
     //              Output logic
     // ==========================================
     always_comb begin
-        PCUpdate        = 1'b0;
+        PCUpdate       = 1'b0;
         IRWrite        = 1'b0;
         PCSrc          = 2'b00; // پیش‌فرض: PC + 1
         RegWrite       = 1'b0;
         sav_en         = 1'b0;
         swap_en        = 1'b0;
         ALUOp          = 2'b00; // PASS
-        Branch = 1'b0;
-        // port_src_ready = 1'b0;
-        // port_dst_valid = 1'b0;
+        Branch         = 1'b0;
+        
+        // --- handeshake ---
+        ready_en       = 1'b0;
+        write_en       = 1'b0;
 
         case (src_type)
             ACC: begin
@@ -202,8 +241,14 @@ module FSM (
                 endcase
             end
 
-            // ST_WAIT_READ:
-            // ST_WAIT_WRITE= 3'b100,
+            ST_WAIT_READ: begin
+                ready_en = 1'b1;
+            end
+
+            ST_WAIT_WRITE: begin
+                write_en = 1'b1;
+            end
+
             ST_BRANCH: begin
                 Branch = 1'b1;
                 PCSrc = {branch_is_jro,branch_src};
