@@ -1,72 +1,153 @@
-// port_interface.sv
-// Handles valid/ready handshake for all 4 physical ports + ANY/LAST resolution
+// Module: port_interface
+import cpu_type_pkg::*;
+
 module port_interface (
-    input  logic        clk, rst,
-    input  logic        port_rd,
-    input  logic        port_wr,
-    input  logic [2:0]  port_sel,    // 2=LEFT,3=RIGHT,4=UP,5=DOWN,6=ANY,7=LAST
-    input  logic [10:0] wr_data,     // ACC value to send
-    output logic [10:0] rd_data,     // received value → datapath
-    output logic        port_ready,  // handshake done this cycle → control_unit
+    input  logic        clk,
+    input  logic        rst,
+    
+    // کنترل از سمت FSM
+    input  PortType     port_dst, 
+    input  PortType     port_src,
+    input  logic        ready_en,
+    input  logic        write_en,
+    input  logic signed [23:0] write_data,
+    
+    input  logic signed [23:0] left_data_in,
+    input  logic signed [23:0] right_data_in,
+    input  logic signed [23:0] up_data_in,
+    input  logic signed [23:0] down_data_in,
 
-    // Physical port buses (index: 0=LEFT,1=RIGHT,2=UP,3=DOWN)
-    output logic [3:0]  tx_valid,
-    output logic [10:0] tx_data [3:0],
-    input  logic [3:0]  tx_ready,    // neighbor accepted
+    input  logic left_valid_in,
+    input  logic right_valid_in,
+    input  logic up_valid_in,
+    input  logic down_valid_in,
+    input  logic left_ready_in,
+    input  logic right_ready_in,
+    input  logic up_ready_in,
+    input  logic down_ready_in,
+    
+    
+    output logic signed [23:0] data_out, // خروجی دیتای ماژول
+    output logic signed [23:0] buffered_data_out, // همون رجیستر بافر
+    output logic read_done, // سیگنال تائید عملیات خوندن
+    output logic write_done, // سیگنال تائید عملیات نوشتن
+    
+    output logic left_ready_out,
+    output logic right_ready_out,
+    output logic up_ready_out,
+    output logic down_ready_out,
 
-    input  logic [3:0]  rx_valid,    // neighbor sending
-    input  logic [10:0] rx_data [3:0],
-    output logic [3:0]  rx_ready     // we can accept
+    output logic left_valid_out,
+    output logic right_valid_out,
+    output logic up_valid_out,
+    output logic down_valid_out
 );
 
-    logic [1:0] last_port;
 
-    // Resolve port_sel → 2-bit index
-    logic [1:0] sel_idx;
+    logic signed [23:0] port_buff_reg;
+    logic signed [23:0] mux_data_in;
+    logic               read_en;
+
+    assign data_out = write_data;
+
+    //==================================
+    //         Data_in MUX
+    //==================================
     always_comb begin
-        case (port_sel)
-            3'd2:    sel_idx = 2'd0;   // LEFT
-            3'd3:    sel_idx = 2'd1;   // RIGHT
-            3'd4:    sel_idx = 2'd2;   // UP
-            3'd5:    sel_idx = 2'd3;   // DOWN
-            3'd7:    sel_idx = last_port;
-            default: sel_idx = 2'd0;   // ANY: overridden below
+        case (port_src)
+            LEFT:  mux_data_in = left_data_in;
+            RIGHT: mux_data_in = right_data_in;
+            UP:    mux_data_in = up_data_in;
+            DOWN:  mux_data_in = down_data_in;
+            default: mux_data_in = 24'sd0;
         endcase
     end
 
-    // ANY: priority-encode first available port (lowest index wins)
-    logic [1:0] any_idx;
-    always_comb begin
-        any_idx = 2'd0;
-        for (int i = 3; i >= 0; i--)
-            if (port_rd ? rx_valid[i[1:0]] : tx_ready[i[1:0]])
-                any_idx = i[1:0];
+    //==================================
+    //         Port Buffer logic
+    //==================================
+    always_ff @(posedge clk or posedge rst) begin : PortBuffer_Register
+        if (rst)
+            port_buff_reg <= 24'sd0;
+        else if (read_en)
+            port_buff_reg <= mux_data_in;
     end
 
-    logic [1:0] active_idx;
-    assign active_idx = (port_sel == 3'd6) ? any_idx : sel_idx;
+    assign buffered_data_out = port_buff_reg;
 
-    // Drive handshake signals
-    always_comb begin
-        tx_valid   = '0;
-        rx_ready   = '0;
-        rd_data    = '0;
-        port_ready = 1'b0;
-        for (int i = 0; i < 4; i++) tx_data[i] = wr_data;
-
-        if (port_wr) begin
-            tx_valid[active_idx] = 1'b1;
-            port_ready           = tx_ready[active_idx];
-        end else if (port_rd) begin
-            rx_ready[active_idx] = 1'b1;
-            port_ready           = rx_valid[active_idx];
-            rd_data              = rx_data[active_idx];
+    //==================================
+    //       Ready Signals Decoder
+    //==================================
+    always_comb begin : Ready_Signals_Decoder
+        left_ready_out  = 1'b0;
+        right_ready_out = 1'b0;
+        up_ready_out    = 1'b0;
+        down_ready_out  = 1'b0;
+        
+        if (ready_en) begin
+            case (port_src)
+                LEFT:  left_ready_out  = 1'b1;
+                RIGHT: right_ready_out = 1'b1;
+                UP:    up_ready_out    = 1'b1;
+                DOWN:  down_ready_out = 1'b1;
+                default: ;
+            endcase
         end
     end
 
-    // Track LAST port
-    always_ff @(posedge clk or posedge rst)
-        if (rst)                              last_port <= 2'd0;
-        else if (port_ready && (port_rd || port_wr)) last_port <= active_idx;
+    //==================================
+    //         Valid input MUX
+    //==================================
+    logic is_valid;
+    always_comb begin
+        is_valid = 1'b0;
+        case (port_src)
+            LEFT:  is_valid = left_valid_in;
+            RIGHT: is_valid = right_valid_in;
+            UP:    is_valid = up_valid_in;
+            DOWN:  is_valid = down_valid_in;
+            default: ;
+        endcase
+    end
+
+    assign read_en  = (is_valid & ready_en);
+    assign read_done = read_en;
+
+    //==================================
+    //       Valid Signals Decoder
+    //==================================
+    always_comb begin : Valid_Signals_Decoder
+        left_valid_out  = 1'b0;
+        right_valid_out = 1'b0;
+        up_valid_out    = 1'b0;
+        down_valid_out  = 1'b0;
+        
+        if (write_en) begin
+            case (port_dst)
+                LEFT:  left_valid_out  = 1'b1;
+                RIGHT: right_valid_out = 1'b1;
+                UP:    up_valid_out    = 1'b1;
+                DOWN:  down_valid_out = 1'b1;
+                default: ;
+            endcase
+        end
+    end
+
+    //==================================
+    //         Ready input MUX
+    //==================================
+    logic is_ready;
+    always_comb begin
+        is_ready = 1'b0;
+        case (port_dst)
+            LEFT:  is_ready = left_ready_in;
+            RIGHT: is_ready = right_ready_in;
+            UP:    is_ready = up_ready_in;
+            DOWN:  is_ready = down_ready_in;
+            default: ;
+        endcase
+    end
+
+    assign write_done = (is_ready & write_en);
 
 endmodule
