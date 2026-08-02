@@ -10,7 +10,8 @@ module port_interface (
     input  PortType     port_src,
     input  logic        ready_en,
     input  logic        write_en,
-    input  logic signed [23:0] write_data,
+
+    input  logic signed [23:0] write_data, // خروجی از سمت مالتی پلکسر داخل دیتاپس
     
     input  logic signed [23:0] left_data_in,
     input  logic signed [23:0] right_data_in,
