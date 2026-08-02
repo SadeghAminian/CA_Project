@@ -123,20 +123,23 @@ module FSM (
                 end
                 else if(is_branch) begin
                     next_state = ST_BRANCH;
-                end else begin
+                end 
+                else if(is_dst_port) begin
+                    next_state = ST_WAIT_WRITE;
+                end 
+                else begin
                     next_state = ST_EXECUTE;
                 end
             end
 
             ST_WAIT_READ: begin
-                if(read_done != 1) begin
+                if(read_done != 1'b1) begin
                     next_state = ST_WAIT_READ;
                 end else if(is_dst_port) begin
-                        next_state = ST_WAIT_WRITE;
-                    end else begin
-                        next_state = ST_EXECUTE;
-                    end
-                
+                    next_state = ST_WAIT_WRITE;
+                end else begin
+                    next_state = ST_EXECUTE;
+                end
             end
             
             ST_WAIT_WRITE: begin
@@ -155,7 +158,6 @@ module FSM (
                 next_state = ST_FETCH;
             end
 
-            
             default: next_state = ST_FETCH;
         endcase
     end
