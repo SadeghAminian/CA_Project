@@ -1,0 +1,110 @@
+# Time=75000 : IN.A[0]=46 accepted
+# Time=75000 : IN.B[0]=71 accepted
+# Time=245000 : OUT[0] <= 46
+# Time=275000 : IN.A[1]=71 accepted
+# Time=315000 : OUT[1] <= 71
+# Time=345000 : IN.B[1]=29 accepted
+# Time=385000 : OUT[2] <= 0
+# Time=535000 : OUT[3] <= 29
+# Time=605000 : IN.A[2]=66 accepted
+# Time=605000 : OUT[4] <= 71
+# Time=615000 : IN.B[2]=90 accepted
+# Time=675000 : OUT[5] <= 0
+# Time=785000 : OUT[6] <= 66
+# Time=815000 : IN.A[3]=21 accepted
+# Time=855000 : OUT[7] <= 90
+# Time=885000 : IN.B[3]=67 accepted
+# Time=925000 : OUT[8] <= 0
+# Time=1055000 : OUT[9] <= 21
+# Time=1085000 : IN.A[4]=79 accepted
+# Time=1125000 : OUT[10] <= 67
+# Time=1155000 : IN.B[4]=79 accepted
+# Time=1195000 : OUT[11] <= 0
+# Time=1325000 : OUT[12] <= 79
+# Time=1355000 : IN.A[5]=23 accepted
+# Time=1395000 : OUT[13] <= 79
+# Time=1425000 : IN.B[5]=84 accepted
+# Time=1465000 : OUT[14] <= 0
+# Time=1595000 : OUT[15] <= 23
+# Time=1625000 : IN.A[6]=62 accepted
+# Time=1665000 : OUT[16] <= 84
+# Time=1695000 : IN.B[6]=78 accepted
+# Time=1735000 : OUT[17] <= 0
+# Time=1865000 : OUT[18] <= 62
+# Time=1895000 : IN.A[7]=23 accepted
+# Time=1935000 : OUT[19] <= 78
+# Time=1965000 : IN.B[7]=27 accepted
+# Time=2005000 : OUT[20] <= 0
+# Time=2135000 : OUT[21] <= 23
+# Time=2165000 : IN.A[8]=36 accepted
+# Time=2205000 : OUT[22] <= 27
+# Time=2235000 : IN.B[8]=60 accepted
+# Time=2275000 : OUT[23] <= 0
+# Time=2405000 : OUT[24] <= 36
+# Time=2435000 : IN.A[9]=96 accepted
+# Time=2475000 : OUT[25] <= 60
+# Time=2505000 : IN.B[9]=45 accepted
+# Time=2545000 : OUT[26] <= 0
+# Time=2695000 : OUT[27] <= 45
+# Time=2765000 : IN.A[10]=12 accepted
+# Time=2765000 : OUT[28] <= 96
+# Time=2775000 : IN.B[10]=67 accepted
+# Time=2835000 : OUT[29] <= 0
+# Time=2945000 : OUT[30] <= 12
+# Time=2975000 : IN.A[11]=97 accepted
+# Time=3015000 : OUT[31] <= 67
+# Time=3045000 : IN.B[11]=42 accepted
+# Time=3085000 : OUT[32] <= 0
+# Time=3235000 : OUT[33] <= 42
+# Time=3305000 : IN.A[12]=47 accepted
+# Time=3305000 : OUT[34] <= 97
+# Time=3315000 : IN.B[12]=64 accepted
+# Time=3375000 : OUT[35] <= 0
+# Time=3485000 : OUT[36] <= 47
+# Time=3555000 : OUT[37] <= 64
+# Time=3625000 : OUT[38] <= 0
+# ==================================================
+#   STAGE 6 RESULT CHECK (min, max, 0 per pair)
+# ==================================================
+#   PASS: [0] OUT=46
+#   PASS: [1] OUT=71
+#   PASS: [2] OUT=0
+#   PASS: [3] OUT=29
+#   PASS: [4] OUT=71
+#   PASS: [5] OUT=0
+#   PASS: [6] OUT=66
+#   PASS: [7] OUT=90
+#   PASS: [8] OUT=0
+#   PASS: [9] OUT=21
+#   PASS: [10] OUT=67
+#   PASS: [11] OUT=0
+#   PASS: [12] OUT=79
+#   PASS: [13] OUT=79
+#   PASS: [14] OUT=0
+#   PASS: [15] OUT=23
+#   PASS: [16] OUT=84
+#   PASS: [17] OUT=0
+#   PASS: [18] OUT=62
+#   PASS: [19] OUT=78
+#   PASS: [20] OUT=0
+#   PASS: [21] OUT=23
+#   PASS: [22] OUT=27
+#   PASS: [23] OUT=0
+#   PASS: [24] OUT=36
+#   PASS: [25] OUT=60
+#   PASS: [26] OUT=0
+#   PASS: [27] OUT=45
+#   PASS: [28] OUT=96
+#   PASS: [29] OUT=0
+#   PASS: [30] OUT=12
+#   PASS: [31] OUT=67
+#   PASS: [32] OUT=0
+#   PASS: [33] OUT=42
+#   PASS: [34] OUT=97
+#   PASS: [35] OUT=0
+#   PASS: [36] OUT=47
+#   PASS: [37] OUT=64
+#   PASS: [38] OUT=0
+# ==================================================
+#   *** STAGE 6: ALL TESTS PASSED! ***
+# ==================================================
