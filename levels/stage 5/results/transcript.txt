@@ -1,0 +1,56 @@
+ Time=75000 : IN.S[0]=-1 accepted
+# Time=185000 : IN.A[0]=-13 accepted
+# Time=205000 : IN.S[1]=1 accepted
+# Time=215000 : IN.B[0]=7 accepted
+# Time=315000 : OUT[0] <= -13
+# Time=325000 : IN.A[1]=-27 accepted
+# Time=375000 : IN.S[2]=1 accepted
+# Time=385000 : IN.B[1]=7 accepted
+# Time=465000 : OUT[1] <= 7
+# Time=495000 : IN.A[2]=-29 accepted
+# Time=515000 : IN.S[3]=-1 accepted
+# Time=525000 : IN.B[2]=6 accepted
+# Time=635000 : OUT[2] <= 6
+# Time=665000 : IN.A[3]=-17 accepted
+# Time=685000 : IN.S[4]=-1 accepted
+# Time=695000 : IN.B[3]=17 accepted
+# Time=795000 : OUT[3] <= -17
+# Time=805000 : IN.A[4]=-19 accepted
+# Time=855000 : IN.S[5]=0 accepted
+# Time=865000 : IN.B[4]=11 accepted
+# Time=965000 : IN.A[5]=-17 accepted
+# Time=965000 : OUT[4] <= -19
+# Time=1025000 : IN.S[6]=1 accepted
+# Time=1035000 : IN.B[5]=29 accepted
+# Time=1105000 : OUT[5] <= 12
+# Time=1135000 : IN.A[6]=0 accepted
+# Time=1165000 : IN.S[7]=1 accepted
+# Time=1175000 : IN.B[6]=25 accepted
+# Time=1275000 : OUT[6] <= 25
+# Time=1305000 : IN.A[7]=-28 accepted
+# Time=1325000 : IN.S[8]=1 accepted
+# Time=1335000 : IN.B[7]=29 accepted
+# Time=1445000 : OUT[7] <= 29
+# Time=1475000 : IN.A[8]=-17 accepted
+# Time=1495000 : IN.S[9]=0 accepted
+# Time=1505000 : IN.B[8]=3 accepted
+# Time=1615000 : OUT[8] <= 3
+# Time=1645000 : IN.A[9]=-28 accepted
+# Time=1675000 : IN.B[9]=7 accepted
+# Time=1755000 : OUT[9] <= -21
+# ==================================================
+#   STAGE 5 RESULT CHECK (MUX by S)
+# ==================================================
+#   PASS: [0] OUT=-13 (S=-1)
+#   PASS: [1] OUT=7 (S=1)
+#   PASS: [2] OUT=6 (S=1)
+#   PASS: [3] OUT=-17 (S=-1)
+#   PASS: [4] OUT=-19 (S=-1)
+#   PASS: [5] OUT=12 (S=0)
+#   PASS: [6] OUT=25 (S=1)
+#   PASS: [7] OUT=29 (S=1)
+#   PASS: [8] OUT=3 (S=1)
+#   PASS: [9] OUT=-21 (S=0)
+# ==================================================
+#   *** STAGE 5: ALL TESTS PASSED! ***
+# ==================================================
