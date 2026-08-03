@@ -1,3 +1,0 @@
-MOV -7, ACC
-ADD -100
-MOV ACC, DOWN
