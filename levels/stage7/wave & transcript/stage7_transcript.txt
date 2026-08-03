@@ -1,0 +1,81 @@
+run -all
+# [115000] IN accepted index=0 data=35
+# [395000] IN accepted index=1 data=0
+# [575000] IN accepted index=2 data=62
+# [575000] OUT.S OK index=0 data=35
+# [635000] OUT.L OK index=0 data=1
+# [905000] IN accepted index=3 data=51
+# [1185000] IN accepted index=4 data=81
+# [1465000] IN accepted index=5 data=54
+# [1745000] IN accepted index=6 data=12
+# [2025000] IN accepted index=7 data=0
+# [2205000] IN accepted index=8 data=51
+# [2215000] OUT.S OK index=1 data=260
+# [2265000] OUT.L OK index=1 data=5
+# [2535000] IN accepted index=9 data=63
+# [2815000] IN accepted index=10 data=50
+# [3095000] IN accepted index=11 data=67
+# [3375000] IN accepted index=12 data=48
+# [3655000] IN accepted index=13 data=0
+# [3835000] IN accepted index=14 data=49
+# [3845000] OUT.S OK index=2 data=279
+# [3895000] OUT.L OK index=2 data=5
+# [4165000] IN accepted index=15 data=23
+# [4445000] IN accepted index=16 data=26
+# [4725000] IN accepted index=17 data=0
+# [4905000] IN accepted index=18 data=33
+# [4905000] OUT.S OK index=3 data=98
+# [4965000] OUT.L OK index=3 data=3
+# [5235000] IN accepted index=19 data=79
+# [5515000] IN accepted index=20 data=76
+# [5795000] IN accepted index=21 data=0
+# [5975000] IN accepted index=22 data=0
+# [5975000] OUT.S OK index=4 data=188
+# [6035000] OUT.L OK index=4 data=3
+# [6205000] IN accepted index=23 data=94
+# [6205000] OUT.S OK index=5 data=0
+# [6265000] OUT.L OK index=5 data=0
+# [6535000] IN accepted index=24 data=0
+# [6715000] IN accepted index=25 data=79
+# [6725000] OUT.S OK index=6 data=94
+# [6775000] OUT.L OK index=6 data=1
+# [7045000] IN accepted index=26 data=0
+# [7225000] IN accepted index=27 data=98
+# [7225000] OUT.S OK index=7 data=79
+# [7285000] OUT.L OK index=7 data=1
+# [7555000] IN accepted index=28 data=15
+# [7835000] IN accepted index=29 data=0
+# [8015000] OUT.S OK index=8 data=113
+# [8015000] IN accepted index=30 data=53
+# [8075000] OUT.L OK index=8 data=2
+# [8345000] IN accepted index=31 data=35
+# [8625000] IN accepted index=32 data=45
+# [8905000] IN accepted index=33 data=12
+# [9185000] IN accepted index=34 data=79
+# [9465000] IN accepted index=35 data=0
+# [9645000] OUT.S OK index=9 data=224
+# [9645000] IN accepted index=36 data=19
+# [9705000] OUT.L OK index=9 data=5
+# [9975000] IN accepted index=37 data=71
+# [10255000] IN accepted index=38 data=0
+# [10435000] OUT.S OK index=10 data=90
+# [10495000] OUT.L OK index=10 data=2
+# 
+# in_ready_unknown_seen    = 0
+# out_s_valid_unknown_seen = 0
+# out_l_valid_unknown_seen = 0
+# out_s_data_unknown_seen  = 0
+# out_l_data_unknown_seen  = 0
+# 
+# IN accepted count    = 39
+# OUT.S produced count = 11
+# OUT.L produced count = 11
+# 
+# Passed: 30
+# Failed: 0
+# ALL TESTS PASSED
+# ** Note: $finish    : C:/Users/ASUS/Desktop/CA7/tis100_stage7_tb.sv(389)
+#    Time: 10695 ns  Iteration: 1  Instance: /tis100_stage7_tb
+# 1
+# Break in Module tis100_stage7_tb at C:/Users/ASUS/Desktop/CA7/tis100_stage7_tb.sv line 389
+
