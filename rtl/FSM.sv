@@ -146,7 +146,7 @@ module FSM (
                 if(write_done != 1'b1) begin
                     next_state = ST_WAIT_WRITE;
                 end else begin
-                    next_state = ST_EXECUTE;
+                    next_state = ST_FETCH;
                 end
             end
 
