@@ -1,0 +1,36 @@
+# Time=75000 : IN.A[0]=0 accepted
+# Time=305000 : IN.A[1]=32 accepted
+# Time=365000 : OUT[0] <= 0
+# Time=565000 : IN.A[2]=30 accepted
+# Time=625000 : OUT[1] <= 1
+# Time=795000 : IN.A[3]=27 accepted
+# Time=855000 : OUT[2] <= 0
+# Time=1025000 : IN.A[4]=24 accepted
+# Time=1085000 : OUT[3] <= 0
+# Time=1255000 : IN.A[5]=28 accepted
+# Time=1315000 : OUT[4] <= 0
+# Time=1515000 : IN.A[6]=37 accepted
+# Time=1575000 : OUT[5] <= 0
+# Time=1775000 : IN.A[7]=33 accepted
+# Time=1835000 : OUT[6] <= 0
+# Time=2005000 : IN.A[8]=24 accepted
+# Time=2065000 : OUT[7] <= 0
+# Time=2235000 : IN.A[9]=13 accepted
+# Time=2295000 : OUT[8] <= 0
+# Time=2525000 : OUT[9] <= 1
+# ==================================================
+#   STAGE 8 RESULT CHECK (|delta| >= 10)
+# ==================================================
+#   PASS: [0] OUT=0 (IN=0)
+#   PASS: [1] OUT=1 (IN=32)
+#   PASS: [2] OUT=0 (IN=30)
+#   PASS: [3] OUT=0 (IN=27)
+#   PASS: [4] OUT=0 (IN=24)
+#   PASS: [5] OUT=0 (IN=28)
+#   PASS: [6] OUT=0 (IN=37)
+#   PASS: [7] OUT=0 (IN=33)
+#   PASS: [8] OUT=0 (IN=24)
+#   PASS: [9] OUT=1 (IN=13)
+# ==================================================
+#   *** STAGE 8: ALL TESTS PASSED! ***
+# ==================================================
