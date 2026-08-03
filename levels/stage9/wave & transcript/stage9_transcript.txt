@@ -1,0 +1,40 @@
+run -all
+# PASS: out=0 expected=0 time=375000
+# PASS: out=1 expected=1 time=565000
+# PASS: out=0 expected=0 time=755000
+# PASS: out=0 expected=0 time=945000
+# PASS: out=0 expected=0 time=1135000
+# PASS: out=2 expected=2 time=1325000
+# PASS: out=0 expected=0 time=1515000
+# PASS: out=0 expected=0 time=1705000
+# PASS: out=3 expected=3 time=1895000
+# PASS: out=0 expected=0 time=2085000
+# PASS: out=0 expected=0 time=2275000
+# PASS: out=4 expected=4 time=2465000
+# PASS: out=0 expected=0 time=2655000
+# PASS: out=0 expected=0 time=2845000
+# PASS: out=1 expected=1 time=3035000
+# PASS: out=0 expected=0 time=3225000
+# PASS: out=1 expected=1 time=3415000
+# PASS: out=0 expected=0 time=3605000
+# PASS: out=3 expected=3 time=3795000
+# PASS: out=0 expected=0 time=3985000
+# PASS: out=2 expected=2 time=4175000
+# PASS: out=0 expected=0 time=4365000
+# PASS: out=4 expected=4 time=4555000
+# PASS: out=0 expected=0 time=4745000
+# ========================================
+# expected_count           = 24
+# produced_count           = 24
+# passed                   = 24
+# failed                   = 0
+# in_ready_unknown_seen    = 0
+# out_valid_unknown_seen   = 0
+# out_data_unknown_seen    = 0
+# ========================================
+# ALL TESTS PASSED
+# ** Note: $finish    : C:/Users/ASUS/Desktop/CA9/tis100_stage9_tb.sv(307)
+#    Time: 5995 ns  Iteration: 1  Instance: /tis100_stage9_tb
+# 1
+# Break in Module tis100_stage9_tb at C:/Users/ASUS/Desktop/CA9/tis100_stage9_tb.sv line 307
+
