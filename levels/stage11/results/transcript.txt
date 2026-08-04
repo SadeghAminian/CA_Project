@@ -1,0 +1,43 @@
+# Time=75000 : IN.A[0]=14 accepted
+# Time=205000 : IN.A[1]=73 accepted
+# Time=335000 : IN.A[2]=58 accepted
+# Time=635000 : IN.A[3]=0 accepted
+# Time=935000 : IN.A[4]=21 accepted
+# Time=955000 : OUT.I[0] <= 14
+# Time=995000 : OUT.A[0] <= 73
+# Time=1095000 : IN.A[5]=87 accepted
+# Time=1225000 : IN.A[6]=11 accepted
+# Time=1525000 : IN.A[7]=56 accepted
+# Time=1825000 : IN.A[8]=0 accepted
+# Time=2115000 : OUT.I[1] <= 11
+# Time=2125000 : IN.A[9]=50 accepted
+# Time=2185000 : OUT.A[1] <= 87
+# Time=2285000 : IN.A[10]=71 accepted
+# Time=2415000 : IN.A[11]=60 accepted
+# Time=2715000 : IN.A[12]=0 accepted
+# Time=3015000 : IN.A[13]=98 accepted
+# Time=3035000 : OUT.I[2] <= 50
+# Time=3075000 : OUT.A[2] <= 71
+# Time=3175000 : IN.A[14]=60 accepted
+# Time=3305000 : IN.A[15]=18 accepted
+# Time=3605000 : IN.A[16]=76 accepted
+# Time=3905000 : IN.A[17]=0 accepted
+# Time=4165000 : OUT.I[3] <= 18
+# Time=4205000 : IN.A[18]=20 accepted
+# Time=4265000 : OUT.A[3] <= 98
+# Time=4365000 : IN.A[19]=28 accepted
+# Time=4495000 : IN.A[20]=98 accepted
+# Time=4795000 : IN.A[21]=0 accepted
+# Time=5115000 : OUT.I[4] <= 20
+# Time=5155000 : OUT.A[4] <= 98
+# ==================================================
+#   STAGE 11 RESULT CHECK (Zero-term: min/max)
+# ==================================================
+#   PASS: Seq[0] I=14 , A=73
+#   PASS: Seq[1] I=11 , A=87
+#   PASS: Seq[2] I=50 , A=71
+#   PASS: Seq[3] I=18 , A=98
+#   PASS: Seq[4] I=20 , A=98
+# ==================================================
+#   *** STAGE 11: ALL TESTS PASSED! ***
+# ==================================================
