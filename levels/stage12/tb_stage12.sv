@@ -1,9 +1,9 @@
 `timescale 1ns/1ps
 //=============================================================================
-// Testbench for TIS-100 Stage 11 (Registered-Sender, Race-Free)
+// Testbench for TIS-100 Stage 12 (Registered-Sender, Race-Free)
 // Zero-terminated sequences: OUT.I=min, OUT.A=max
 //=============================================================================
-module tb_stage11;
+module tb_stage12;
 
     localparam int  NUM_IN  = 22;   // تعداد ورودی‌ها (شامل صفرهای پایان‌دهنده)
     localparam int  NUM_OUT = 10;   // 5 دنباله × 2 خروجی (min + max)
