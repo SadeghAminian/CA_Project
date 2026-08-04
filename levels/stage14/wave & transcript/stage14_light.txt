@@ -1,0 +1,13 @@
+run -all
+# ========================================
+# Stage 14 Demo Test
+# A = 7, B = 8, Expected = 56
+# ========================================
+# [75000] B accepted = 8
+# [75000] A accepted = 7
+# [2175000] PASS: expected=56 actual=56
+# ========================================
+# FINAL RESULT: PASS
+# ========================================
+# ** Note: $finish    : C:/Users/ASUS/Desktop/CA14/t14_tb.sv(159)
+#    Time: 2675 ns  Iteration: 1  Instance: /t14_tb_demo
