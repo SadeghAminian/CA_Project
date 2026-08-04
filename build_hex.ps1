@@ -28,8 +28,6 @@ $failed = 0
 $asmFiles = Get-ChildItem -Path $AsmFolder -Filter *.asm
 
 foreach ($file in $asmFiles) {
-
-    # مسیرهای نسبی نسبت به ریشه پروژه
     $asmRelative = Join-Path $AsmFolder $file.Name
     $hexRelative = Join-Path $HexFolder ($file.BaseName + ".hex")
 
@@ -38,6 +36,19 @@ foreach ($file in $asmFiles) {
     if ($LASTEXITCODE -eq 0) {
         Write-Host "[OK] $($file.Name)" -ForegroundColor Green
         $success++
+
+        if (Test-Path $hexRelative) {
+            try {
+                $lineCount = (Get-Content -Path $hexRelative | Measure-Object -Line).Lines
+                
+                if ($lineCount -gt 16) {
+                    Write-Host "Warning! $($file.BaseName).hex has $lineCount lines" -ForegroundColor Yellow
+                }
+            }
+            catch {
+                Write-Host "Warning: Could not read line count for $($file.BaseName).hex" -ForegroundColor DarkYellow
+            }
+        }
     }
     else {
         Write-Host "[FAILED] $($file.Name)" -ForegroundColor Red
