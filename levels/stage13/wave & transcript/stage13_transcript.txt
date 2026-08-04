@@ -1,0 +1,92 @@
+run
+# PASS: OUT.X index=0 value=51 time=105000
+# PASS: OUT.A index=0 value=68 time=135000
+run -all
+# PASS: OUT.X index=1 value=62 time=605000
+# PASS: OUT.A index=1 value=59 time=635000
+# PASS: OUT.X index=2 value=16 time=1105000
+# PASS: OUT.A index=2 value=59 time=1135000
+# PASS: OUT.X index=3 value=83 time=1605000
+# PASS: OUT.A index=3 value=49 time=1635000
+# PASS: OUT.X index=4 value=61 time=2105000
+# PASS: OUT.A index=4 value=82 time=2135000
+# PASS: OUT.X index=5 value=14 time=2605000
+# PASS: OUT.A index=5 value=16 time=2655000
+# PASS: OUT.X index=6 value=35 time=3105000
+# PASS: OUT.A index=6 value=45 time=3155000
+# PASS: OUT.X index=7 value=17 time=3605000
+# PASS: OUT.A index=7 value=88 time=3655000
+# PASS: OUT.X index=8 value=63 time=4105000
+# PASS: OUT.A index=8 value=31 time=4155000
+# PASS: OUT.X index=9 value=48 time=4605000
+# PASS: OUT.A index=9 value=74 time=4655000
+# PASS: OUT.X index=10 value=22 time=5105000
+# PASS: OUT.A index=10 value=77 time=5175000
+# PASS: OUT.X index=11 value=40 time=5605000
+# PASS: OUT.A index=11 value=71 time=5675000
+# PASS: OUT.X index=12 value=29 time=6105000
+# PASS: OUT.A index=12 value=18 time=6175000
+# PASS: OUT.X index=13 value=50 time=6605000
+# PASS: OUT.A index=13 value=70 time=6675000
+# PASS: OUT.X index=14 value=77 time=7105000
+# PASS: OUT.A index=14 value=48 time=7175000
+# PASS: OUT.X index=15 value=32 time=7605000
+# PASS: OUT.A index=15 value=35 time=7695000
+# PASS: OUT.X index=16 value=31 time=8105000
+# PASS: OUT.A index=16 value=73 time=8195000
+# PASS: OUT.X index=17 value=49 time=8605000
+# PASS: OUT.A index=17 value=85 time=8695000
+# PASS: OUT.X index=18 value=89 time=9105000
+# PASS: OUT.A index=18 value=91 time=9195000
+# PASS: OUT.X index=19 value=89 time=9605000
+# PASS: OUT.A index=19 value=53 time=9695000
+# PASS: OUT.X index=20 value=12 time=10105000
+# PASS: OUT.A index=20 value=30 time=10215000
+# PASS: OUT.X index=21 value=59 time=10605000
+# PASS: OUT.A index=21 value=41 time=10715000
+# PASS: OUT.X index=22 value=53 time=11105000
+# PASS: OUT.A index=22 value=19 time=11215000
+# PASS: OUT.X index=23 value=75 time=11605000
+# PASS: OUT.A index=23 value=61 time=11715000
+# PASS: OUT.X index=24 value=37 time=12105000
+# PASS: OUT.A index=24 value=62 time=12215000
+# PASS: OUT.X index=25 value=78 time=12605000
+# PASS: OUT.A index=25 value=18 time=12735000
+# PASS: OUT.X index=26 value=57 time=13105000
+# PASS: OUT.A index=26 value=26 time=13235000
+# PASS: OUT.X index=27 value=38 time=13605000
+# PASS: OUT.A index=27 value=13 time=13735000
+# PASS: OUT.X index=28 value=44 time=14105000
+# PASS: OUT.A index=28 value=59 time=14235000
+# PASS: OUT.X index=29 value=98 time=14605000
+# PASS: OUT.A index=29 value=83 time=14735000
+# PASS: OUT.X index=30 value=85 time=15105000
+# PASS: OUT.A index=30 value=95 time=15255000
+# PASS: OUT.X index=31 value=25 time=15605000
+# PASS: OUT.A index=31 value=55 time=15755000
+# PASS: OUT.X index=32 value=80 time=16105000
+# PASS: OUT.A index=32 value=73 time=16255000
+# PASS: OUT.X index=33 value=39 time=16605000
+# PASS: OUT.A index=33 value=84 time=16755000
+# PASS: OUT.X index=34 value=20 time=17105000
+# PASS: OUT.A index=34 value=40 time=17255000
+# PASS: OUT.X index=35 value=16 time=17605000
+# PASS: OUT.A index=35 value=22 time=17775000
+# PASS: OUT.X index=36 value=91 time=18105000
+# PASS: OUT.A index=36 value=14 time=18275000
+# PASS: OUT.X index=37 value=81 time=18605000
+# PASS: OUT.A index=37 value=28 time=18775000
+# PASS: OUT.X index=38 value=84 time=19105000
+# PASS: OUT.A index=38 value=90 time=19275000
+# PASS: IN.X accepted count = 39
+# PASS: IN.A accepted count = 39
+# PASS: OUT.X produced count = 39
+# PASS: OUT.A produced count = 39
+# Passed: 82
+# Failed: 0
+# ALL TESTS PASSED
+# ** Note: $finish    : C:/Users/ASUS/Desktop/CA5/tis100_stage1_tb.sv(481)
+#    Time: 19356 ns  Iteration: 0  Instance: /tis100_stage1_tb
+# 1
+# Break in Module tis100_stage1_tb at C:/Users/ASUS/Desktop/CA5/tis100_stage1_tb.sv line 481
+
