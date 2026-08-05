@@ -1,0 +1,56 @@
+# Time=75000 : IN.A[0]=47 accepted
+# Time=75000 : IN.B[0]=3 accepted
+# Time=4935000 : IN.B[1]=6 accepted
+# Time=4945000 : OUT.R[0] <= 2
+# Time=5005000 : OUT.Q[0] <= 15
+# Time=5045000 : IN.A[1]=75 accepted
+# Time=9035000 : IN.B[2]=3 accepted
+# Time=9045000 : OUT.R[1] <= 3
+# Time=9105000 : OUT.Q[1] <= 12
+# Time=9145000 : IN.A[2]=65 accepted
+# Time=15745000 : IN.B[3]=7 accepted
+# Time=15755000 : OUT.R[2] <= 2
+# Time=15815000 : OUT.Q[2] <= 21
+# Time=15855000 : IN.A[3]=81 accepted
+# Time=19555000 : IN.B[4]=9 accepted
+# Time=19565000 : OUT.R[3] <= 4
+# Time=19625000 : OUT.Q[3] <= 11
+# Time=19665000 : IN.A[4]=96 accepted
+# Time=23075000 : IN.B[5]=9 accepted
+# Time=23085000 : OUT.R[4] <= 6
+# Time=23145000 : OUT.Q[4] <= 10
+# Time=23185000 : IN.A[5]=74 accepted
+# Time=26015000 : IN.B[6]=2 accepted
+# Time=26025000 : OUT.R[5] <= 2
+# Time=26085000 : OUT.Q[5] <= 8
+# Time=26125000 : IN.A[6]=96 accepted
+# Time=40555000 : IN.B[7]=1 accepted
+# Time=40565000 : OUT.R[6] <= 0
+# Time=40625000 : OUT.Q[6] <= 48
+# Time=40665000 : IN.A[7]=62 accepted
+# Time=59155000 : IN.B[8]=2 accepted
+# Time=59165000 : OUT.R[7] <= 0
+# Time=59225000 : OUT.Q[7] <= 62
+# Time=59265000 : IN.A[8]=10 accepted
+# Time=61225000 : IN.B[9]=9 accepted
+# Time=61235000 : OUT.R[8] <= 0
+# Time=61295000 : OUT.Q[8] <= 5
+# Time=61335000 : IN.A[9]=71 accepted
+# Time=63885000 : OUT.R[9] <= 8
+# Time=63945000 : OUT.Q[9] <= 7
+# ==================================================
+#   STAGE 19 RESULT CHECK (Division)
+# ==================================================
+#   PASS: [0] Q=15 R=2 (A=47 B=3)
+#   PASS: [1] Q=12 R=3 (A=75 B=6)
+#   PASS: [2] Q=21 R=2 (A=65 B=3)
+#   PASS: [3] Q=11 R=4 (A=81 B=7)
+#   PASS: [4] Q=10 R=6 (A=96 B=9)
+#   PASS: [5] Q=8 R=2 (A=74 B=9)
+#   PASS: [6] Q=48 R=0 (A=96 B=2)
+#   PASS: [7] Q=62 R=0 (A=62 B=1)
+#   PASS: [8] Q=5 R=0 (A=10 B=2)
+#   PASS: [9] Q=7 R=8 (A=71 B=9)
+# ==================================================
+#   *** STAGE 19: ALL TESTS PASSED! ***
+# ==================================================
