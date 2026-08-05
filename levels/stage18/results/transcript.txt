@@ -1,0 +1,52 @@
+add wave -position insertpoint sim:/tb_stage18/*
+run -all
+# Time=75000 : IN[0]=11 accepted
+# Time=245000 : OUT.3[0] <= 11
+# Time=315000 : OUT.5[0] <= 11
+# Time=455000 : IN[1]=77 accepted
+# Time=575000 : OUT.3[1] <= 88
+# Time=645000 : OUT.5[1] <= 88
+# Time=785000 : IN[2]=17 accepted
+# Time=905000 : OUT.3[2] <= 105
+# Time=975000 : OUT.5[2] <= 105
+# Time=1115000 : IN[3]=67 accepted
+# Time=1235000 : OUT.3[3] <= 161
+# Time=1305000 : OUT.5[3] <= 172
+# Time=1445000 : IN[4]=30 accepted
+# Time=1565000 : OUT.3[4] <= 114
+# Time=1635000 : OUT.5[4] <= 202
+# Time=1775000 : IN[5]=84 accepted
+# Time=1895000 : OUT.3[5] <= 181
+# Time=1965000 : OUT.5[5] <= 275
+# Time=2105000 : IN[6]=17 accepted
+# Time=2225000 : OUT.3[6] <= 131
+# Time=2295000 : OUT.5[6] <= 215
+# Time=2435000 : IN[7]=23 accepted
+# Time=2555000 : OUT.3[7] <= 124
+# Time=2625000 : OUT.5[7] <= 221
+# Time=2765000 : IN[8]=96 accepted
+# Time=2885000 : OUT.3[8] <= 136
+# Time=2955000 : OUT.5[8] <= 250
+# Time=3095000 : IN[9]=82 accepted
+# Time=3215000 : OUT.3[9] <= 201
+# Time=3285000 : OUT.5[9] <= 302
+# Time=3425000 : IN[10]=90 accepted
+# Time=3545000 : OUT.3[10] <= 268
+# Time=3615000 : OUT.5[10] <= 308
+# ==================================================
+#   STAGE 18 RESULT CHECK (Moving Sums)
+# ==================================================
+#   PASS: [0] OUT3=11 OUT5=11 (IN=11)
+#   PASS: [1] OUT3=88 OUT5=88 (IN=77)
+#   PASS: [2] OUT3=105 OUT5=105 (IN=17)
+#   PASS: [3] OUT3=161 OUT5=172 (IN=67)
+#   PASS: [4] OUT3=114 OUT5=202 (IN=30)
+#   PASS: [5] OUT3=181 OUT5=275 (IN=84)
+#   PASS: [6] OUT3=131 OUT5=215 (IN=17)
+#   PASS: [7] OUT3=124 OUT5=221 (IN=23)
+#   PASS: [8] OUT3=136 OUT5=250 (IN=96)
+#   PASS: [9] OUT3=201 OUT5=302 (IN=82)
+#   PASS: [10] OUT3=268 OUT5=308 (IN=90)
+# ==================================================
+#   *** STAGE 18: ALL TESTS PASSED! ***
+# ==================================================
