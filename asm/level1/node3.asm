@@ -1,0 +1,4 @@
+MOV 5 UP
+ADD 7
+SUB 8
+NOP

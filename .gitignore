@@ -2,9 +2,10 @@ report/ISA.docx
 sim/program.hex
 
 
-*.hex
 
-*.asm
+asm/temp
+hex/temp
+
 
 # ModelSim / Questa
 work/
