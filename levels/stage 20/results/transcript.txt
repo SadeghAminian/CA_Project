@@ -1,0 +1,53 @@
+# Time=75000 : IN.V[0]=860 accepted
+# Time=75000 : IN.X[0]=0 accepted
+# Time=165000 : IN.X[1]=5 accepted
+# Time=205000 : IN.V[1]=215 accepted
+# Time=335000 : IN.V[2]=230 accepted
+# Time=465000 : IN.V[3]=784 accepted
+# Time=595000 : IN.V[4]=900 accepted
+# Time=725000 : IN.V[5]=978 accepted
+# Time=855000 : IN.V[6]=945 accepted
+# Time=985000 : IN.V[7]=124 accepted
+# Time=1115000 : IN.V[8]=432 accepted
+# Time=1245000 : IN.V[9]=679 accepted
+# Time=1375000 : IN.V[10]=0 accepted
+# Time=2825000 : OUT[0] <= 860
+# Time=2965000 : IN.X[2]=0 accepted
+# Time=4785000 : OUT[1] <= 978
+# Time=4925000 : IN.X[3]=4 accepted
+# Time=6745000 : OUT[2] <= 860
+# Time=6885000 : IN.X[4]=0 accepted
+# Time=8835000 : OUT[3] <= 900
+# Time=8975000 : IN.X[5]=8 accepted
+# Time=10925000 : OUT[4] <= 860
+# Time=11065000 : IN.X[6]=5 accepted
+# Time=12495000 : OUT[5] <= 432
+# Time=12635000 : IN.X[7]=4 accepted
+# Time=13415000 : OUT[6] <= 978
+# Time=13555000 : IN.X[8]=2 accepted
+# Time=14855000 : OUT[7] <= 900
+# Time=14995000 : IN.X[9]=7 accepted
+# Time=16685000 : OUT[8] <= 230
+# Time=16825000 : IN.X[10]=3 accepted
+# Time=18125000 : OUT[9] <= 124
+# Time=18265000 : IN.X[11]=0 accepted
+# Time=19435000 : OUT[10] <= 784
+# Time=21655000 : OUT[11] <= 860
+# ==================================================
+#   STAGE 20 RESULT CHECK (Stack Lookup)
+# ==================================================
+#   PASS: [0] OUT=860 (IDX=0)
+#   PASS: [1] OUT=978 (IDX=5)
+#   PASS: [2] OUT=860 (IDX=0)
+#   PASS: [3] OUT=900 (IDX=4)
+#   PASS: [4] OUT=860 (IDX=0)
+#   PASS: [5] OUT=432 (IDX=8)
+#   PASS: [6] OUT=978 (IDX=5)
+#   PASS: [7] OUT=900 (IDX=4)
+#   PASS: [8] OUT=230 (IDX=2)
+#   PASS: [9] OUT=124 (IDX=7)
+#   PASS: [10] OUT=784 (IDX=3)
+#   PASS: [11] OUT=860 (IDX=0)
+# ==================================================
+#   *** STAGE 20: ALL TESTS PASSED! ***
+# ==================================================
