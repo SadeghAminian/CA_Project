@@ -1,0 +1,41 @@
+*******************************************************************
+Running Quartus Prime Timing Analyzer
+    Version 21.1.1 Build 850 06/23/2022 SJ Standard Edition
+    Processing started: Wed Aug  5 23:42:20 2026
+*******************************************************************
+The Quartus Prime Shell supports all TCL commands in addition
+to Quartus Prime Tcl commands. All unrecognized commands are
+assumed to be external and are run using Tcl's "exec"
+command.
+- Type "exit" to exit.
+- Type "help" to view a list of Quartus Prime Tcl packages.
+- Type "help <package name>" to view a list of Tcl commands
+  available for the specified Quartus Prime Tcl package.
+- Type "help -tcl" to get an overview on Quartus Prime Tcl usages.
+*******************************************************************
+project_open -force "C:/Users/ASUS/Desktop/CA32/quartus/tb.qpf" -revision tb
+create_timing_netlist -model slow
+Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Parallel compilation is enabled and will use 14 of the 14 processors detected
+Low junction temperature is 0 degrees C
+High junction temperature is 85 degrees C
+read_sdc
+Synopsys Design Constraints File file not found: 'tb.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+update_timing_netlist
+No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Deriving Clocks
+    create_clock -period 1.000 -name clk clk
+No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
+Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+set_operating_conditions "MIN_fast_1100mv_0c"
+set_operating_conditions "8_H7_slow_1100mv_0c"
+set_operating_conditions "MIN_fast_1100mv_85c"
+set_operating_conditions "MIN_fast_1100mv_0c"
+report_path -npaths 1 -panel_name {Report Path} -multi_corner
+Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Report Path: Found 1 paths. Longest delay is 2.907
+    -npaths 1
+    -multi_corner
+    -panel_name "Report Path"
+1 2.907
+
