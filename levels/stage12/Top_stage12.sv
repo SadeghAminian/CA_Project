@@ -1,8 +1,8 @@
+//Sequence Peak Detectore
 `timescale 1ns/1ps
 //=============================================================================
 // Top module for TIS-100 Stage 12 (8 nodes)
 // Zero-terminated sequences: OUT.I = min, OUT.A = max
-// prefix = C:/Users/Bob/CA Project/hex/level11
 //=============================================================================
 module Top_stage12 (
     input  logic        clk,
