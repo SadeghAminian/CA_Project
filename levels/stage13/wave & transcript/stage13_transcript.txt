@@ -1,92 +1,1092 @@
-run
-# PASS: OUT.X index=0 value=51 time=105000
-# PASS: OUT.A index=0 value=68 time=135000
 run -all
-# PASS: OUT.X index=1 value=62 time=605000
-# PASS: OUT.A index=1 value=59 time=635000
-# PASS: OUT.X index=2 value=16 time=1105000
-# PASS: OUT.A index=2 value=59 time=1135000
-# PASS: OUT.X index=3 value=83 time=1605000
-# PASS: OUT.A index=3 value=49 time=1635000
-# PASS: OUT.X index=4 value=61 time=2105000
-# PASS: OUT.A index=4 value=82 time=2135000
-# PASS: OUT.X index=5 value=14 time=2605000
-# PASS: OUT.A index=5 value=16 time=2655000
-# PASS: OUT.X index=6 value=35 time=3105000
-# PASS: OUT.A index=6 value=45 time=3155000
-# PASS: OUT.X index=7 value=17 time=3605000
-# PASS: OUT.A index=7 value=88 time=3655000
-# PASS: OUT.X index=8 value=63 time=4105000
-# PASS: OUT.A index=8 value=31 time=4155000
-# PASS: OUT.X index=9 value=48 time=4605000
-# PASS: OUT.A index=9 value=74 time=4655000
-# PASS: OUT.X index=10 value=22 time=5105000
-# PASS: OUT.A index=10 value=77 time=5175000
-# PASS: OUT.X index=11 value=40 time=5605000
-# PASS: OUT.A index=11 value=71 time=5675000
-# PASS: OUT.X index=12 value=29 time=6105000
-# PASS: OUT.A index=12 value=18 time=6175000
-# PASS: OUT.X index=13 value=50 time=6605000
-# PASS: OUT.A index=13 value=70 time=6675000
-# PASS: OUT.X index=14 value=77 time=7105000
-# PASS: OUT.A index=14 value=48 time=7175000
-# PASS: OUT.X index=15 value=32 time=7605000
-# PASS: OUT.A index=15 value=35 time=7695000
-# PASS: OUT.X index=16 value=31 time=8105000
-# PASS: OUT.A index=16 value=73 time=8195000
-# PASS: OUT.X index=17 value=49 time=8605000
-# PASS: OUT.A index=17 value=85 time=8695000
-# PASS: OUT.X index=18 value=89 time=9105000
-# PASS: OUT.A index=18 value=91 time=9195000
-# PASS: OUT.X index=19 value=89 time=9605000
-# PASS: OUT.A index=19 value=53 time=9695000
-# PASS: OUT.X index=20 value=12 time=10105000
-# PASS: OUT.A index=20 value=30 time=10215000
-# PASS: OUT.X index=21 value=59 time=10605000
-# PASS: OUT.A index=21 value=41 time=10715000
-# PASS: OUT.X index=22 value=53 time=11105000
-# PASS: OUT.A index=22 value=19 time=11215000
-# PASS: OUT.X index=23 value=75 time=11605000
-# PASS: OUT.A index=23 value=61 time=11715000
-# PASS: OUT.X index=24 value=37 time=12105000
-# PASS: OUT.A index=24 value=62 time=12215000
-# PASS: OUT.X index=25 value=78 time=12605000
-# PASS: OUT.A index=25 value=18 time=12735000
-# PASS: OUT.X index=26 value=57 time=13105000
-# PASS: OUT.A index=26 value=26 time=13235000
-# PASS: OUT.X index=27 value=38 time=13605000
-# PASS: OUT.A index=27 value=13 time=13735000
-# PASS: OUT.X index=28 value=44 time=14105000
-# PASS: OUT.A index=28 value=59 time=14235000
-# PASS: OUT.X index=29 value=98 time=14605000
-# PASS: OUT.A index=29 value=83 time=14735000
-# PASS: OUT.X index=30 value=85 time=15105000
-# PASS: OUT.A index=30 value=95 time=15255000
-# PASS: OUT.X index=31 value=25 time=15605000
-# PASS: OUT.A index=31 value=55 time=15755000
-# PASS: OUT.X index=32 value=80 time=16105000
-# PASS: OUT.A index=32 value=73 time=16255000
-# PASS: OUT.X index=33 value=39 time=16605000
-# PASS: OUT.A index=33 value=84 time=16755000
-# PASS: OUT.X index=34 value=20 time=17105000
-# PASS: OUT.A index=34 value=40 time=17255000
-# PASS: OUT.X index=35 value=16 time=17605000
-# PASS: OUT.A index=35 value=22 time=17775000
-# PASS: OUT.X index=36 value=91 time=18105000
-# PASS: OUT.A index=36 value=14 time=18275000
-# PASS: OUT.X index=37 value=81 time=18605000
-# PASS: OUT.A index=37 value=28 time=18775000
-# PASS: OUT.X index=38 value=84 time=19105000
-# PASS: OUT.A index=38 value=90 time=19275000
-# PASS: IN.X accepted count = 39
-# PASS: IN.A accepted count = 39
-# PASS: OUT.X produced count = 39
-# PASS: OUT.A produced count = 39
-# Passed: 82
-# Failed: 0
-# ALL TESTS PASSED
-# ** Note: $finish    : C:/Users/ASUS/Desktop/CA5/tis100_stage1_tb.sv(481)
-#    Time: 19356 ns  Iteration: 0  Instance: /tis100_stage1_tb
-# 1
-# Break in Module tis100_stage1_tb at C:/Users/ASUS/Desktop/CA5/tis100_stage1_tb.sv line 481
-
+# ========================================
+# T13 DEBUG TEST START
+# ========================================
+# [55000][C0] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=0)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=0 data=0)
+#                N12: L(v=0 r=0) U(v=0 r=0) D(v=0 r=0 data=0)
+#                N22: U(v=0 r=0 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [65000][C1] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=0)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=0 data=0)
+#                N12: L(v=0 r=0) U(v=0 r=0) D(v=0 r=0 data=0)
+#                N22: U(v=0 r=0 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [75000][C2] [IN->N01] data=1
+# [75000][C2] STATE | in_v=1 in_r=1 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [80000] INPUT SENT: 1
+# [85000][C3] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [95000][C4] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [105000][C5] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [115000][C6] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [125000][C7] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [135000][C8] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [145000][C9] [N01->N02] data=1
+# [145000][C9] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=1 r=1) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [155000][C10] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [165000][C11] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [175000][C12] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [185000][C13] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [195000][C14] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [205000][C15] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [215000][C16] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [225000][C17] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [235000][C18] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [245000][C19] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [255000][C20] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [265000][C21] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [275000][C22] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [285000][C23] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [295000][C24] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [305000][C25] [IN->N01] data=2
+# [305000][C25] STATE | in_v=1 in_r=1 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [310000] INPUT SENT: 2
+# [315000][C26] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [325000][C27] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [335000][C28] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [345000][C29] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [355000][C30] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [365000][C31] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [375000][C32] [N01->N02] data=2
+# [375000][C32] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=1 r=1) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [385000][C33] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [395000][C34] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [405000][C35] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [415000][C36] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [425000][C37] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [435000][C38] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [445000][C39] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [455000][C40] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [465000][C41] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [475000][C42] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [485000][C43] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [495000][C44] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [505000][C45] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [515000][C46] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [525000][C47] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [535000][C48] [IN->N01] data=3
+# [535000][C48] STATE | in_v=1 in_r=1 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [540000] INPUT SENT: 3
+# [545000][C49] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [555000][C50] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [565000][C51] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [575000][C52] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [585000][C53] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [595000][C54] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [605000][C55] [N01->N02] data=3
+# [605000][C55] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=1 r=1) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [615000][C56] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [625000][C57] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [635000][C58] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [645000][C59] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [655000][C60] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [665000][C61] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [675000][C62] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [685000][C63] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [695000][C64] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [705000][C65] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [715000][C66] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [725000][C67] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [735000][C68] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [745000][C69] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [755000][C70] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [765000][C71] [IN->N01] data=4
+# [765000][C71] STATE | in_v=1 in_r=1 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [770000] INPUT SENT: 4
+# [775000][C72] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [785000][C73] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [795000][C74] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [805000][C75] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [815000][C76] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [825000][C77] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [835000][C78] [N01->N02] data=4
+# [835000][C78] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=1 r=1) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [845000][C79] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [855000][C80] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [865000][C81] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [875000][C82] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [885000][C83] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [895000][C84] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [905000][C85] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [915000][C86] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [925000][C87] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [935000][C88] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [945000][C89] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [955000][C90] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [965000][C91] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [975000][C92] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [985000][C93] STATE | in_v=1 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [995000][C94] [IN->N01] data=0
+# [995000][C94] STATE | in_v=1 in_r=1 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1000000] INPUT SENT: 0
+# [1005000][C95] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1015000][C96] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1025000][C97] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1035000][C98] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1045000][C99] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1055000][C100] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1065000][C101] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1075000][C102] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1085000][C103] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=0 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1095000][C104] [N01->N11] data=4
+# [1095000][C104] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=1)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=0)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1105000][C105] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=4)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1115000][C106] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=4)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1125000][C107] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=0 r=1 data=4)
+#                N12: L(v=0 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1135000][C108] [N11->N12] data=4
+# [1135000][C108] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=1 data=4)
+#                N12: L(v=1 r=1) U(v=0 r=0) D(v=0 r=1 data=0)
+#                N22: U(v=0 r=1 data=0) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1145000][C109] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=4)
+#                N22: U(v=0 r=1 data=4) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1155000][C110] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=4)
+#                N22: U(v=0 r=1 data=4) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1165000][C111] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=5)
+#                N22: U(v=0 r=1 data=5) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1175000][C112] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=5)
+#                N22: U(v=0 r=1 data=5) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1185000][C113] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=5)
+#                N22: U(v=0 r=1 data=5) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1195000][C114] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=4)
+#                N22: U(v=0 r=1 data=4) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1205000][C115] [N02->N12] data=4
+# [1205000][C115] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=1 r=1 data=4)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=1 r=1) D(v=0 r=1 data=4)
+#                N22: U(v=0 r=1 data=4) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1215000][C116] [N12->N22] data=4
+# [1215000][C116] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=1 r=1 data=4)
+#                N22: U(v=1 r=1 data=4) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1225000][C117] [N22->OUT] data=4
+# [1225000][C117] [OUTPUT] data=4
+# [1225000][C117] STATE | in_v=0 in_r=0 | out_v=1 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=4)
+#                N22: U(v=0 r=0 data=4) D(v=1 r=1 data=4)
+# ----------------------------------------------------------------
+# [1235000][C118] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=4)
+#                N22: U(v=0 r=0 data=4) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1245000][C119] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1255000][C120] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1265000][C121] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1275000][C122] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1285000][C123] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1295000][C124] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=2)
+#                N22: U(v=0 r=1 data=2) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1305000][C125] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=4)
+#                N22: U(v=0 r=1 data=4) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1315000][C126] [N02->N12] data=3
+# [1315000][C126] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=1 r=1 data=3)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=1 r=1) D(v=0 r=1 data=4)
+#                N22: U(v=0 r=1 data=4) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1325000][C127] [N12->N22] data=3
+# [1325000][C127] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=1 r=1 data=3)
+#                N22: U(v=1 r=1 data=3) D(v=0 r=1 data=4)
+# ----------------------------------------------------------------
+# [1335000][C128] [N22->OUT] data=3
+# [1335000][C128] [OUTPUT] data=3
+# [1335000][C128] STATE | in_v=0 in_r=0 | out_v=1 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=3)
+#                N22: U(v=0 r=0 data=3) D(v=1 r=1 data=3)
+# ----------------------------------------------------------------
+# [1345000][C129] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=3)
+#                N22: U(v=0 r=0 data=3) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1355000][C130] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1365000][C131] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1375000][C132] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1385000][C133] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1395000][C134] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1405000][C135] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=2)
+#                N22: U(v=0 r=1 data=2) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1415000][C136] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=3)
+#                N22: U(v=0 r=1 data=3) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1425000][C137] [N02->N12] data=2
+# [1425000][C137] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=1 r=1 data=2)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=1 r=1) D(v=0 r=1 data=3)
+#                N22: U(v=0 r=1 data=3) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1435000][C138] [N12->N22] data=2
+# [1435000][C138] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=1 r=1 data=2)
+#                N22: U(v=1 r=1 data=2) D(v=0 r=1 data=3)
+# ----------------------------------------------------------------
+# [1445000][C139] [N22->OUT] data=2
+# [1445000][C139] [OUTPUT] data=2
+# [1445000][C139] STATE | in_v=0 in_r=0 | out_v=1 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=1 r=1 data=2)
+# ----------------------------------------------------------------
+# [1455000][C140] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1465000][C141] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1475000][C142] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1485000][C143] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=1)
+#                N22: U(v=0 r=0 data=1) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1495000][C144] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=0)
+# ----------------------------------------------------------------
+# [1505000][C145] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=0 data=2)
+#                N22: U(v=0 r=0 data=2) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1515000][C146] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=2)
+#                N22: U(v=0 r=1 data=2) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1525000][C147] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=0 r=1 data=2)
+#                N22: U(v=0 r=1 data=2) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1535000][C148] [N02->N12] data=1
+# [1535000][C148] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=1 r=1 data=1)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=1 r=1) D(v=0 r=1 data=2)
+#                N22: U(v=0 r=1 data=2) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1545000][C149] [N12->N22] data=1
+# [1545000][C149] STATE | in_v=0 in_r=0 | out_v=0 out_r=1
+#                N01: R(v=0 r=0) D(v=1 r=0)
+#                N02: D(v=0 r=0 data=0)
+#                N11: R(v=1 r=0 data=4)
+#                N12: L(v=1 r=0) U(v=0 r=0) D(v=1 r=1 data=1)
+#                N22: U(v=1 r=1 data=1) D(v=0 r=1 data=2)
+# ----------------------------------------------------------------
+# [1555000][C150] [N22->OUT] data=1
+# [1555000][C150] [OUTPUT] data=1
+# ========================================
+# TEST COMPLETED
+# ========================================
+# ** Note: $stop    : C:/Users/ASUS/Desktop/CA13/t13_tb.sv(124)
+#    Time: 1555 ns  Iteration: 1  Instance: /t13_tb_debug
+# Break in Module t13_tb_debug at C:/Users/ASUS/Desktop/CA13/t13_tb.sv line 124
